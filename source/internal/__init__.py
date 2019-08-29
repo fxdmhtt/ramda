@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collections import UserList
-
-class List(UserList):
+class Array(UserList):
     def __init__(self, *args):
         super().__init__(*args)
 
@@ -10,5 +9,8 @@ class List(UserList):
         if len(self.data) <= key:
             self.data += [None] * (key - len(self.data) + 1)
         super().__setitem__(key, value)
-
 del UserList
+
+class Object(object):
+    def __init__(self, d):
+        self.__dict__.update(d)

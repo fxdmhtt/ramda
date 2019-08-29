@@ -5,10 +5,10 @@ from ._isPlaceholder import _isPlaceholder
 
 def _curryN(length, received, fn):
     from functools import wraps
-    from . import List
+    from . import Array
     @wraps(fn)
     def function(*arguments):
-        combined = List()
+        combined = Array()
         argsIdx = 0
         left = length
         combinedIdx = 0

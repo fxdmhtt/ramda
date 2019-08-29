@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-F = lambda *args: False
+F = lambda *_: False
