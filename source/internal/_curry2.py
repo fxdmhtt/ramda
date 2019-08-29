@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import ._curry1 import _curry1
-import ._isPlaceholder import _isPlaceholder
+from ._curry1 import _curry1
+from ._isPlaceholder import _isPlaceholder
 
 def _curry2(fn):
     from functools import wraps

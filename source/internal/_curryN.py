@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import ._arity import _arity
-import ._isPlaceholder import _isPlaceholder
+from ._arity import _arity
+from ._isPlaceholder import _isPlaceholder
 
 def _curryN(length, received, fn):
     from functools import wraps
