@@ -11,7 +11,8 @@ from .keys import keys
 @_curry2
 def map(fn, functor):
     if callable(functor):
-        return curryN(functor.__code__.co_argcount, lambda *arguments: \
+        import inspect
+        return curryN(len(inspect.signature(functor).parameters), lambda *arguments: \
             fn(functor(*arguments))
         )
     elif isinstance(functor, dict):

@@ -5,4 +5,5 @@ from .curryN import curryN
 
 @_curry1
 def curry(fn):
-    return curryN(fn.__code__.co_argcount, fn)
+    import inspect
+    return curryN(len(inspect.signature(fn).parameters), fn)

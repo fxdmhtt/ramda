@@ -14,4 +14,5 @@ def converge(after, fns):
         return after(*_map(lambda fn: \
             fn(*args)
         , fns))
-    return curryN(reduce(max, 0, (fn.__code__.co_argcount for fn in fns)), function)
+    import inspect
+    return curryN(reduce(max, 0, (len(inspect.signature(fn).parameters) for fn in fns)), function)

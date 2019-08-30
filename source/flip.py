@@ -10,4 +10,5 @@ def flip(fn):
         args[0] = b
         args[1] = a
         return fn(*args)
-    return curryN(fn.__code__.co_argcount, function)
+    import inspect
+    return curryN(len(inspect.signature(fn).parameters), function)

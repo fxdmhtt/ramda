@@ -5,4 +5,5 @@ from .liftN import liftN
 
 @_curry1
 def lift(fn):
-    return liftN(fn.__code__.co_argcount, fn)
+    import inspect
+    return liftN(len(inspect.signature(fn).parameters), fn)

@@ -31,7 +31,8 @@ def applySpec(spec):
     def function(*arguments):
         args = arguments
         return mapValues(lambda f: apply(f, args), spec)
+    import inspect
     return curryN(
-        reduce(max, 0, (fn.__code__.co_argcount for fn in values(spec))),
+        reduce(max, 0, (len(inspect.signature(fn).parameters) for fn in values(spec))),
         function
     )

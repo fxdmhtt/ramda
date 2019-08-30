@@ -5,4 +5,5 @@ from .constructN import constructN
 
 @_curry1
 def construct(Fn):
-    return constructN(Fn.__code__.co_argcount, Fn)
+    import inspect
+    return constructN(len(inspect.signature(Fn).parameters), Fn)

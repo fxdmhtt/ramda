@@ -16,4 +16,5 @@ def anyPass(preds):
                 return True
             idx += 1
         return False
-    return curryN(reduce(max, 0, (pred.__code__.co_argcount for pred in preds)), function)
+    import inspect
+    return curryN(reduce(max, 0, (len(inspect.signature(pred).parameters) for pred in preds)), function)

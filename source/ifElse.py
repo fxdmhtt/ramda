@@ -5,7 +5,8 @@ from .curryN import curryN
 
 @_curry3
 def ifElse(condition, onTrue, onFalse):
-    return curryN(max(condition.__code__.co_argcount, onTrue.__code__.co_argcount, onFalse.__code__.co_argcount),
+    import inspect
+    return curryN(max(len(inspect.signature(condition).parameters), len(inspect.signature(onTrue).parameters), len(inspect.signature(onFalse).parameters)),
         lambda *arguments: \
             onTrue(*arguments) if condition(*arguments) else onFalse(*arguments)
     )

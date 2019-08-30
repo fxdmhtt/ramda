@@ -18,4 +18,5 @@ def addIndex(fn):
             return result
         args[0] = function
         return fn(*args)
-    return curryN(fn.__code__.co_argcount, function)
+    import inspect
+    return curryN(len(inspect.signature(fn).parameters), function)
