@@ -16,4 +16,4 @@ def anyPass(preds):
                 return True
             idx += 1
         return False
-    return curryN(reduce(max, 0, pluck('length', preds)), function)
+    return curryN(reduce(max, 0, (pred.__code__.co_argcount for pred in preds)), function)
