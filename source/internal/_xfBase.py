@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import Object
-_xfBase = Object({
+from . import JSObject
+_xfBase = JSObject({
     'init': lambda: \
         this.xf['@@transducer/init'](),
     'result': lambda result: \

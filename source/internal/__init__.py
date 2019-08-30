@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-class Object:
+class JSObject:
     def __init__(self, d):
         self.__dict__.update(d)
