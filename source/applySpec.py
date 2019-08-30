@@ -23,16 +23,17 @@ def mapValues(fn, obj):
 
 @_curry1
 def applySpec(spec):
+    from .internal import wrapToJSFunction
     spec = mapValues(
-        lambda v: v if callable(v) else applySpec(v),
+        lambda v: wrapToJSFunction(v) if callable(v) else applySpec(v),
         spec
     )
 
     def function(*arguments):
         args = arguments
         return mapValues(lambda f: apply(f, args), spec)
-    import inspect
+    from .internal import getArgCount
     return curryN(
-        reduce(max, 0, (len(inspect.signature(fn).parameters) for fn in values(spec))),
+        reduce(max, 0, (getArgCount(fn) for fn in values(spec))),
         function
     )

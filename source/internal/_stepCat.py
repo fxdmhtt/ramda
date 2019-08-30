@@ -6,15 +6,13 @@ from ._isArrayLike import _isArrayLike
 from ._isTransformer import _isTransformer
 from ..objOf import objOf
 
-_stepCatArray = {
+from . import JSObject
+_stepCatArray = JSObject({
     '@@transducer/init': list,
     '@@transducer/step': lambda xs, x: \
-        (
-            xs.append(x),
-            xs,
-        )[-1],
+        xs.append(x) or xs,
     '@@transducer/result': _identity
-}
+})
 _stepCatString = {
     '@@transducer/init': str,
     '@@transducer/step': lambda a, b: a + b,

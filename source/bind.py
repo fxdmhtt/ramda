@@ -5,7 +5,7 @@ from .internal._curry2 import _curry2
 
 @_curry2
 def bind(fn, thisObj):
-    import inspect
-    return _arity(len(inspect.signature(fn).parameters), lambda *arguments: \
+    from .internal import getArgCount
+    return _arity(getArgCount(fn), lambda *arguments: \
         fn(*arguments)
     )

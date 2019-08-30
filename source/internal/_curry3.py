@@ -5,12 +5,9 @@ from ._curry2 import _curry2
 from ._isPlaceholder import _isPlaceholder
 
 def _curry3(fn):
-    from . import undefined
-    def f3(a=undefined, b=undefined, c=undefined):
-        arguments = [a, b, c]
-        while arguments and arguments[-1] is undefined:
-            arguments.pop()
-
+    from functools import wraps
+    @wraps(fn)
+    def f3(*arguments):
         if len(arguments) == 0:
             return f3
         elif len(arguments) == 1:

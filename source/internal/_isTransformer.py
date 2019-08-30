@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
 
 def _isTransformer(obj):
-    return obj is not None and callable(getattr(obj, '@@transducer/step', None))
+    from . import JSObject
+    return obj is not None and isinstance(obj, JSObject) and callable(obj['@@transducer/step'])

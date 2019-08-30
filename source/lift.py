@@ -5,5 +5,5 @@ from .liftN import liftN
 
 @_curry1
 def lift(fn):
-    import inspect
-    return liftN(len(inspect.signature(fn).parameters), fn)
+    from .internal import getArgCount
+    return liftN(getArgCount(fn), fn)

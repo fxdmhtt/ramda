@@ -3,6 +3,8 @@
 from ._isArray import _isArray
 
 def _checkForMethod(methodname, fn):
+    from functools import wraps
+    @wraps(fn)
     def function(*arguments):
         length = len(arguments)
         if length == 0:

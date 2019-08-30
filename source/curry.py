@@ -5,5 +5,5 @@ from .curryN import curryN
 
 @_curry1
 def curry(fn):
-    import inspect
-    return curryN(len(inspect.signature(fn).parameters), fn)
+    from .internal import getArgCount
+    return curryN(getArgCount(fn), fn)

@@ -6,9 +6,12 @@ from .curryN import curryN
 
 @_curry1
 def addIndex(fn):
+    from functools import wraps
+    @wraps(fn)
     def function(*arguments):
         idx = 0
-        origFn = arguments[0]
+        from .internal import wrapToJSFunction
+        origFn = wrapToJSFunction(arguments[0])
         list_ = arguments[len(arguments) - 1]
         args = list(arguments[0:])
         def function(*arguments):
@@ -18,5 +21,5 @@ def addIndex(fn):
             return result
         args[0] = function
         return fn(*args)
-    import inspect
-    return curryN(len(inspect.signature(fn).parameters), function)
+    from .internal import getArgCount
+    return curryN(getArgCount(fn), function)

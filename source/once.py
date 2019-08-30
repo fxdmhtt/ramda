@@ -14,5 +14,5 @@ def once(fn):
         called = True
         result = fn(*arguments)
         return result
-    import inspect
-    return _arity(len(inspect.signature(fn).parameters), function)
+    from .internal import getArgCount
+    return _arity(getArgCount(fn), function)

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
 
 def _has(prop, obj):
-    return hasattr(obj, prop)
+    from . import JSObject
+    return hasattr(obj, prop) or isinstance(obj, JSObject) and prop in obj

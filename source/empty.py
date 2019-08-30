@@ -12,7 +12,7 @@ def empty(x):
         else (
             x.constructor['fantasy-land/empty']() if x is not None and x.constructor is not None and callable(x.constructor['fantasy-land/empty'])
             else (
-                x.empty() if x is not None and callable(x.empty)
+                x.empty() if x is not None and callable(getattr(x, 'empty', None))
                 else (
                     x.constructor.empty() if x is not None and x.constructor is not None and callable(x.constructor.empty)
                     else (

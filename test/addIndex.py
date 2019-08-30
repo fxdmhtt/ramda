@@ -35,7 +35,7 @@ class Test_binary_functions_like_reduce(unittest.TestCase):
 
     def test_passes_the_index_as_a_third_parameter_to_the_predicate(self):
         eq(self, self.reduceIndexed(self.timesIndexed, 0, [1, 2, 3, 4, 5]), 40)
-        eq(self, self.reduceIndexed(self.objectify, {}, ['a', 'b', 'c', 'd', 'e']), {a: 0, b: 1, c: 2, d: 3, e: 4})
+        eq(self, self.reduceIndexed(self.objectify, {}, ['a', 'b', 'c', 'd', 'e']), {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4})
 
     def test_passes_the_entire_list_as_a_fourth_parameter_to_the_predicate(self):
         list = [1, 2, 3]

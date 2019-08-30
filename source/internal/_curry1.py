@@ -3,12 +3,9 @@
 from ._isPlaceholder import _isPlaceholder
 
 def _curry1(fn):
-    from . import undefined
-    def f1(a=undefined):
-        arguments = [a]
-        while arguments and arguments[-1] is undefined:
-            arguments.pop()
-
+    from functools import wraps
+    @wraps(fn)
+    def f1(*arguments):
         if len(arguments) == 0:
             return f1
         else:

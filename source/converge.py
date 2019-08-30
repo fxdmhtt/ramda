@@ -9,10 +9,12 @@ from .reduce import reduce
 
 @_curry2
 def converge(after, fns):
+    from .internal import wrapToJSFunction
+    fns = [wrapToJSFunction(fn) for fn in fns]
     def function(*arguments):
         args = arguments
         return after(*_map(lambda fn: \
             fn(*args)
         , fns))
-    import inspect
-    return curryN(reduce(max, 0, (len(inspect.signature(fn).parameters) for fn in fns)), function)
+    from .internal import getArgCount
+    return curryN(reduce(max, 0, (getArgCount(fn) for fn in fns)), function)

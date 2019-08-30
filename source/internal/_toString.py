@@ -29,9 +29,7 @@ def _toString(x, seen):
     elif isinstance(x, str):
         return repr(x)
     else:
-        if callable(x):
-            import inspect
-            repr_ = f'{x.__name__}{inspect.signature(x)}'
-            if isinstance(repr_, dict):
-                return repr_
+        if callable(getattr(x, '__str__', None)):
+            repr_ = x.__str__()
+            return repr_
         return '{' + ', '.join(mapPairs(x, keys(x))) + '}'

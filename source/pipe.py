@@ -8,8 +8,8 @@ from .tail import tail
 def pipe(*arguments):
     if len(arguments) == 0:
         raise ValueError('pipe requires at least one argument')
-    import inspect
+    from .internal import getArgCount
     return _arity(
-        len(inspect.signature(arguments[0]).parameters),
+        getArgCount(arguments[0]),
         reduce(_pipe, arguments[0], tail(arguments))
     )

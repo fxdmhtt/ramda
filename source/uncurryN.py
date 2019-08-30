@@ -10,8 +10,8 @@ def uncurryN(depth, fn):
         value = fn
         idx = 0
         while currentDepth <= depth and callable(value):
-            import inspect
-            endIdx = len(arguments) if currentDepth == depth else idx + len(inspect.signature(value).parameters)
+            from .internal import getArgCount
+            endIdx = len(arguments) if currentDepth == depth else idx + getArgCount(value)
             value = value(*arguments[idx:endIdx])
             currentDepth += 1
             idx = endIdx

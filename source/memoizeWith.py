@@ -12,5 +12,5 @@ def memoizeWith(mFn, fn):
         if not _has(key, cache):
             cache[key] = fn(*arguments)
         return cache[key]
-    import inspect
-    return _arity(len(inspect.signature(fn).parameters), function)
+    from .internal import getArgCount
+    return _arity(getArgCount(fn), function)

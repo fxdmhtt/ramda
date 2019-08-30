@@ -15,8 +15,8 @@ def pipeWith(xf, list):
     headList = head(list)
     tailList = tail(list)
 
-    import inspect
-    return _arity(len(inspect.signature(headList).parameters), lambda *arguments: \
+    from .internal import getArgCount
+    return _arity(getArgCount(headList), lambda *arguments: \
         _reduce(
             lambda result, f: \
                 xf(f, result),

@@ -8,6 +8,8 @@ from .reduce import reduce
 
 @_curry1
 def allPass(preds):
+    from .internal import wrapToJSFunction
+    preds = [wrapToJSFunction(pred) for pred in preds]
     def function(*arguments):
         idx = 0
         len_ = len(preds)
@@ -16,5 +18,5 @@ def allPass(preds):
                 return False
             idx += 1
         return True
-    import inspect
-    return curryN(reduce(max, 0, (len(inspect.signature(pred).parameters) for pred in preds)), function)
+    from .internal import getArgCount
+    return curryN(reduce(max, 0, (getArgCount(pred) for pred in preds)), function)

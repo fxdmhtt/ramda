@@ -9,11 +9,7 @@ from .map import map
 def ap(applyF, applyX):
     return (
         applyX['fantasy-land/ap'](applyF) if callable(applyX['fantasy-land/ap'])
-        else (
-            applyF.ap(applyX) if callable(applyF.ap)
-            else (
-                lambda x: applyF(x)(applyX(x)) if callable(applyF)
-                else _reduce(lambda acc, f: _concat(acc, map(f, applyX)), [], applyF)
-            )
-        )
+        else applyF.ap(applyX) if callable(getattr(applyF, 'ap', None))
+        else lambda x: applyF(x)(applyX(x)) if callable(applyF)
+        else _reduce(lambda acc, f: _concat(acc, map(f, applyX)), [], applyF)
     )

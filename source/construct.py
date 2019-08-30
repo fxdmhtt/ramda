@@ -5,5 +5,5 @@ from .constructN import constructN
 
 @_curry1
 def construct(Fn):
-    import inspect
-    return constructN(len(inspect.signature(Fn).parameters), Fn)
+    from .internal import getArgCount
+    return constructN(getArgCount(Fn), Fn)

@@ -9,5 +9,5 @@ def thunkify(fn):
         fnArgs = arguments
         return lambda *_: \
             fn(*fnArgs)
-    import inspect
-    return curryN(len(inspect.signature(fn).parameters), createThunk)
+    from .internal import getArgCount
+    return curryN(getArgCount(fn), createThunk)

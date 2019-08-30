@@ -11,5 +11,5 @@ def tryCatch(tryer, catcher):
             return tryer(*arguments)
         except Exception as e:
             return catcher(*_concat([e], arguments))
-    import inspect
-    return _arity(len(inspect.signature(tryer).parameters), function)
+    from .internal import getArgCount
+    return _arity(getArgCount(tryer), function)

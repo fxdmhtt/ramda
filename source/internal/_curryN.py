@@ -4,6 +4,8 @@ from ._arity import _arity
 from ._isPlaceholder import _isPlaceholder
 
 def _curryN(length, received, fn):
+    from functools import wraps
+    @wraps(fn)
     def function(*arguments):
         combined = []
         argsIdx = 0

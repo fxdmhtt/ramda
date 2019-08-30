@@ -10,5 +10,5 @@ def flip(fn):
         args[0] = b
         args[1] = a
         return fn(*args)
-    import inspect
-    return curryN(len(inspect.signature(fn).parameters), function)
+    from .internal import getArgCount
+    return curryN(getArgCount(fn), function)
