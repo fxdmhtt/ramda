@@ -24,5 +24,5 @@ def _flatCat(xf):
         '@@transducer/result': lambda result: \
             getattr(rxf, '@@transducer/result')(result),
         '@@transducer/step': lambda result, input: \
-            return _reduce(rxf, result, [input]) if not _isArrayLike(input) else _reduce(rxf, result, input)
+            _reduce(rxf, result, [input]) if not _isArrayLike(input) else _reduce(rxf, result, input)
     }

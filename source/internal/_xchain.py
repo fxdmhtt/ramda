@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from ._concat import _concat
+from ._curry2 import _curry2
 from ._flatCat import _flatCat
 from ..map import map
 

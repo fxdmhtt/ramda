@@ -11,4 +11,4 @@ def any(fn, list):
             return True
         idx += 1
     return False
-any = _curry2(_dispatchable(['any'], _xany, any)
+any = _curry2(_dispatchable(['any'], _xany, any))

@@ -11,4 +11,4 @@ def find(fn, list):
         if fn(list[idx]):
             return list[idx]
         idx += 1
-find = _curry2(_dispatchable(['find'], _xfind, find)
+find = _curry2(_dispatchable(['find'], _xfind, find))

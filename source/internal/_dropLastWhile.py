@@ -2,7 +2,7 @@
 
 from ..slice import slice
 
-def dropLastWhile(pred, xs):
+def _dropLastWhile(pred, xs):
     idx = len(xs) - 1
     while idx >= 0 and pred(xs[idx]):
         idx -= 1

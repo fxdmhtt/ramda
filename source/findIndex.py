@@ -12,4 +12,4 @@ def findIndex(fn, list):
             return idx
         idx += 1
     return -1
-findIndex = _curry2(_dispatchable([], _xfindIndex, findIndex)
+findIndex = _curry2(_dispatchable([], _xfindIndex, findIndex))

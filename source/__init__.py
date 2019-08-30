@@ -1,4 +1,4 @@
--*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from .F import F
 from .T import T
@@ -151,7 +151,7 @@ from .of import of
 from .omit import omit
 from .once import once
 from .or_ import or_
-from .otherwise import otherwise
+# from .otherwise import otherwise
 from .over import over
 from .pair import pair
 from .partial import partial
@@ -212,7 +212,7 @@ from .takeLastWhile import takeLastWhile
 from .takeWhile import takeWhile
 from .tap import tap
 from .test import test
-from .andThen import andThen
+# from .andThen import andThen
 from .times import times
 from .toLower import toLower
 from .toPairs import toPairs

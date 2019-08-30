@@ -10,4 +10,4 @@ def forEach(fn, list):
         fn(list[idx])
         idx += 1
     return list
-forEach = _curry2(_checkForMethod('forEach', forEach)
+forEach = _curry2(_checkForMethod('forEach', forEach))

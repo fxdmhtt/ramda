@@ -31,7 +31,7 @@ def _toString(x, seen):
     else:
         if callable(x):
             import inspect
-            repr = f'{x.__name__}{inspect.signature(x)}'
-            if isinstance(repr, dict):
-                return repr
+            repr_ = f'{x.__name__}{inspect.signature(x)}'
+            if isinstance(repr_, dict):
+                return repr_
         return '{' + ', '.join(mapPairs(x, keys(x))) + '}'

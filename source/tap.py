@@ -7,4 +7,4 @@ from .internal._xtap import _xtap
 def tap(fn, x):
     fn(x)
     return x
-tap = _curry2(_dispatchable([], _xtap, tap)
+tap = _curry2(_dispatchable([], _xtap, tap))

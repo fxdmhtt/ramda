@@ -12,4 +12,4 @@ def dropWhile(pred, xs):
         idx += 1
     import sys
     return slice(idx, sys.maxsize, xs)
-dropWhile = _curry2(_dispatchable(['dropWhile'], _xdropWhile, dropWhile)
+dropWhile = _curry2(_dispatchable(['dropWhile'], _xdropWhile, dropWhile))

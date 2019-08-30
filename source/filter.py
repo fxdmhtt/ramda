@@ -17,4 +17,4 @@ def filter(pred, filterable):
         _reduce(function, {}, keys(filterable)) if _isObject(filterable)
         else _filter(pred, filterable)
     )
-filter = _curry2(_dispatchable(['filter'], _xfilter, filter)
+filter = _curry2(_dispatchable(['filter'], _xfilter, filter))

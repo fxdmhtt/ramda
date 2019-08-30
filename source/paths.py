@@ -16,4 +16,4 @@ def paths(pathsArray, obj):
             val = nth(p, val) if _isInteger(p) else val[p]
             idx += 1
         return val
-    return map(function, pathsArray)
+    return list(map(function, pathsArray))

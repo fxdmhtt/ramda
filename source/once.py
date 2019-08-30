@@ -8,10 +8,10 @@ def once(fn):
     called = False
     result = None
     def function(*arguments):
+        nonlocal result
         if called:
             return result
         called = True
-        nonlocal result
         result = fn(*arguments)
         return result
     return _arity(fn.__code__.co_argcount, function)

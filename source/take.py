@@ -8,4 +8,4 @@ from .slice import slice
 def take(n, xs):
     import sys
     return slice(0, sys.maxsize if n < 0 else n, xs)
-take = _curry2(_dispatchable(['take'], _xtake, take)
+take = _curry2(_dispatchable(['take'], _xtake, take))

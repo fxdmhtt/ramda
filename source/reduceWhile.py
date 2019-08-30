@@ -8,4 +8,4 @@ def _reduceWhile(pred, fn, a, list):
     return _reduce(lambda acc, x: \
         fn(acc, x) if pred(acc, x) else _reduced(acc)
     , a, list)
-reduceWhile = _curryN(4, [], function _reduceWhile)
+reduceWhile = _curryN(4, [], _reduceWhile)

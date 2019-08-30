@@ -2,4 +2,4 @@
 
 from .invoker import invoker
 
-toLower = invoker(0, 'upper')
+toUpper = invoker(0, 'upper')

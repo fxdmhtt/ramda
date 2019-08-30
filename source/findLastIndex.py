@@ -11,4 +11,4 @@ def findLastIndex(fn, list):
             return idx
         idx -= 1
     return -1
-findLastIndex = _curry2(_dispatchable([], _xfindLastIndex, findLastIndex)
+findLastIndex = _curry2(_dispatchable([], _xfindLastIndex, findLastIndex))

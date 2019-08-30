@@ -8,11 +8,11 @@ def _dispatchable(methodNames, xf, fn):
         if len(arguments) == 0:
             return fn()
         args = arguments[0:]
-        obj = args.pop()
+        *args, obj = args
         if not _isArray(obj):
             idx = 0
             while idx < len(methodNames):
-                if callable(getattr(obj, methodNames[idx], None))
+                if callable(getattr(obj, methodNames[idx], None)):
                     return obj[methodNames[idx]](*args)
                 idx += 1
             if _isTransformer(obj):

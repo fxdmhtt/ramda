@@ -11,4 +11,4 @@ def takeWhile(fn, xs):
     while idx < len and fn(xs[idx]):
         idx += 1
     return slice(0, idx, xs)
-takeWhile = _curry2(_dispatchable(['takeWhile'], _xtakeWhile, takeWhile)
+takeWhile = _curry2(_dispatchable(['takeWhile'], _xtakeWhile, takeWhile))

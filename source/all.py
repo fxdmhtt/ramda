@@ -11,4 +11,4 @@ def all(fn, list):
             return False
         idx += 1
     return True
-all = _curry2(_dispatchable(['all'], _xall, all)
+all = _curry2(_dispatchable(['all'], _xall, all))

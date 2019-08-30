@@ -10,4 +10,4 @@ def findLast(fn, list):
         if fn(list[idx]):
             return list[idx]
         idx -= 1
-findLast = _curry2(_dispatchable([], _xfindLast, findLast)
+findLast = _curry2(_dispatchable([], _xfindLast, findLast))

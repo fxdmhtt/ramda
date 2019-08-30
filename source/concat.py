@@ -4,7 +4,7 @@ from .internal._curry2 import _curry2
 from .internal._isArray import _isArray
 from .internal._isFunction import _isFunction
 from .internal._isString import _isString
-from .internal.toString import toString
+from .toString import toString
 
 @_curry2
 def concat(a, b):
