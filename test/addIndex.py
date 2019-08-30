@@ -47,8 +47,8 @@ class Test_works_with_functions_like_all_that_do_not_typically_have_index_applie
         self.superDiagonal = self.allIndexed(R.gt)
 
     def test_passes_the_index_as_a_second_parameter(self):
-        eq(self, self.superDiagonal([8, 6, 5, 4, 9]), true)
-        eq(self, self.superDiagonal([8, 6, 1, 3, 9]), false)
+        eq(self, self.superDiagonal([8, 6, 5, 4, 9]), True)
+        eq(self, self.superDiagonal([8, 6, 1, 3, 9]), False)
 
 class Test_works_with_arbitrary_user_defined_functions(unittest.TestCase):
     def setUp(self):
