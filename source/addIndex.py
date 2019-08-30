@@ -9,10 +9,11 @@ def addIndex(fn):
     def function(*arguments):
         idx = 0
         origFn = arguments[0]
-        list = arguments[len(arguments) - 1]
-        args = arguments[0:]
+        list_ = arguments[len(arguments) - 1]
+        args = list(arguments[0:])
         def function(*arguments):
-            result = origFn(*_concat(arguments, [idx, list]))
+            nonlocal idx
+            result = origFn(*_concat(arguments, [idx, list_]))
             idx += 1
             return result
         args[0] = function
