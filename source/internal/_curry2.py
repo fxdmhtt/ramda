@@ -4,8 +4,12 @@ from ._curry1 import _curry1
 from ._isPlaceholder import _isPlaceholder
 
 def _curry2(fn):
-    def f2(a=None, b=None):
-        arguments = list(filter(lambda x: x is not None, [a, b]))
+    from .internal import undefined
+    def f2(a=undefined, b=undefined):
+        arguments = [a, b]
+        while arguments and arguments[-1] is undefined:
+            arguments.pop()
+
         if len(arguments) == 0:
             return f2
         elif len(arguments) == 1:

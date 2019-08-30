@@ -3,8 +3,12 @@
 from ._isPlaceholder import _isPlaceholder
 
 def _curry1(fn):
-    def f1(a=None):
-        arguments = list(filter(lambda x: x is not None, [a]))
+    from .internal import undefined
+    def f1(a=undefined):
+        arguments = [a]
+        while arguments and arguments[-1] is undefined:
+            arguments.pop()
+
         if len(arguments) == 0:
             return f1
         else:
