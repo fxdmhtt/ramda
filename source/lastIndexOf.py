@@ -6,6 +6,8 @@ from .equals import equals
 
 @_curry2
 def lastIndexOf(target, xs):
+    # ignore: native lastIndexOf
+
     idx = len(xs) - 1
     while idx >= 0:
         if equals(xs[idx], target):

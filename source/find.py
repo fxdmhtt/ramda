@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+
+from .internal._curry2 import _curry2
+from .internal._dispatchable import _dispatchable
+from .internal._xfind import _xfind
+
+def find(fn, list):
+    idx = 0
+    len = len(list)
+    while idx < len:
+        if fn(list[idx]):
+            return list[idx]
+        idx += 1
+find = _curry2(_dispatchable(['find'], _xfind, find)

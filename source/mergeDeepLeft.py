@@ -5,4 +5,6 @@ from .mergeDeepWithKey import mergeDeepWithKey
 
 @_curry2
 def mergeDeepLeft(lObj, rObj):
-    return mergeDeepWithKey(lambda k, lVal, rVal: lVal, lObj, rObj)
+    return mergeDeepWithKey(lambda k, lVal, rVal: \
+        lVal
+    , lObj, rObj)

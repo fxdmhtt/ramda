@@ -7,6 +7,7 @@ def descend(fn, a, b):
     aa = fn(a)
     bb = fn(b)
     return (
-        -1 if aa > bb else
-        1 if aa < bb else 0
+        -1 if aa > bb
+        else 1 if aa < bb
+        else 0
     )

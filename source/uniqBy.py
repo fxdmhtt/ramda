@@ -5,7 +5,7 @@ from .internal._curry2 import _curry2
 
 @_curry2
 def uniqBy(fn, list):
-    set = new _Set()
+    set = _Set()
     result = []
     idx = 0
 

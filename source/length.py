@@ -6,4 +6,4 @@ from .internal._isNumber import _isNumber
 @_curry1
 def length(list):
     from collections import Sized
-    return list is not None and len(list) if isinstance(list, Sized) else float('nan')
+    return len(list) if list is not None and isinstance(list, Sized) else float('nan')

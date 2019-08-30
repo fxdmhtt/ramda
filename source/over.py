@@ -7,4 +7,4 @@ Identity = lambda x: \
 
 @_curry3
 def over(lens, f, x):
-    return lens(lambda y: Identity(f(y)))(x)['value']
+    return lens(lambda y: Identity(f(y)))(x).value

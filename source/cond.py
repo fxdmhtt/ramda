@@ -15,7 +15,7 @@ def cond(pairs):
     )
     def function(*arguments):
         idx = 0
-        while (idx < len(pairs)):
+        while idx < len(pairs):
             if pairs[idx][0](*arguments):
                 return pairs[idx][1](*arguments)
             idx += 1

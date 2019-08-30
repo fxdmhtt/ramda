@@ -6,7 +6,6 @@ from .internal._isString import _isString
 @_curry1
 def reverse(list):
     return (
-        ''.join(reversed(list.split('')))
-        if _isString(list) else
-        reversed(list[0:])
+        ''.join(reversed(list)) if _isString(list)
+        else reversed(list[0:])
     )

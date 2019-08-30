@@ -11,7 +11,7 @@ def uncurryN(depth, fn):
         idx = 0
         while currentDepth <= depth and callable(value):
             endIdx = len(arguments) if currentDepth == depth else idx + value.__code__.co_argcount
-            value = value.apply(*arguments[idx:endIdx])
+            value = value(*arguments[idx:endIdx])
             currentDepth += 1
             idx = endIdx
         return value

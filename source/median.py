@@ -10,4 +10,4 @@ def median(list):
         return float('nan')
     width = 2 - len % 2
     idx = (len - width) / 2
-    return mean(sorted(list[0:])[idx: idx + width])
+    return mean(sorted(list[0:])[idx:idx + width])

@@ -11,4 +11,5 @@ def sortWith(fns, list):
             result = fns[i](a, b)
             i += 1
         return result
-    return sorted(list[0:], key=function)
+    from functools import cmp_to_key
+    return sorted(list[0:], key=cmp_to_key(function))

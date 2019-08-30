@@ -7,4 +7,7 @@ from .or_ import or_
 
 @_curry2
 def either(f, g):
-    return lambda *arguments: f(*arguments) or g(*arguments) if _isFunction(f) else lift(or_)(f, g)
+    return (
+        lambda *arguments: f(*arguments) or g(*arguments) if _isFunction(f)
+        else lift(or_)(f, g)
+    )

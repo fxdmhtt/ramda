@@ -8,7 +8,7 @@ def splitWhenever(pred, list):
     for i in range(len(list)):
         if not pred(list[i]):
             curr.append(list[i])
-        if (i < len(list) - 1 and pred(list[i + 1]) or i == len(list) - 1) and curr.length > 0:
+        if (i < len(list) - 1 and pred(list[i + 1]) or i == len(list) - 1) and len(curr) > 0:
             acc.append(curr)
             curr = []
     return acc

@@ -8,10 +8,9 @@ def differenceWith(pred, first, second):
     out = []
     idx = 0
     firstLen = len(first)
-
-    while (idx < firstLen):
+    while idx < firstLen:
         if not _includesWith(pred, first[idx], second) and \
-                not _includesWith(pred, first[idx], out):
+           not _includesWith(pred, first[idx], out):
             out.append(first[idx])
         idx += 1
     return out

@@ -11,6 +11,7 @@ from .reduce import reduce
 def converge(after, fns):
     def function(*arguments):
         args = arguments
-        context = this
-        return after(*_map(lambda fn: fn(*args), fns))
+        return after(*_map(lambda fn: \
+            fn(*args)
+        , fns))
     return curryN(reduce(max, 0, pluck('length', fns)), function)

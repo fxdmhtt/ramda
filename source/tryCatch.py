@@ -11,4 +11,4 @@ def tryCatch(tryer, catcher):
             return tryer(*arguments)
         except Exception as e:
             return catcher(*_concat([e], arguments))
-    return _arity(tryer.length, function)
+    return _arity(tryer.__code__.co_argcount, function)

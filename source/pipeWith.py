@@ -15,8 +15,11 @@ def pipeWith(xf, list):
     headList = head(list)
     tailList = tail(list)
 
-    return _arity(len(headList), lambda *arguments: _reduce(
-        lambda result, f: xf(f, result),
-        headList(*arguments),
-        tailList
-    ))
+    return _arity(headList.__code__.co_argcount, lambda *arguments: \
+        _reduce(
+            lambda result, f: \
+                xf(f, result),
+            headList(*arguments),
+            tailList
+        )
+    )

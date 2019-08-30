@@ -10,7 +10,7 @@ from .internal.toString import toString
 def concat(a, b):
     if _isArray(a):
         if _isArray(b):
-            return a.concat(b)
+            return a.extend(b)
         raise TypeError(toString(b) + ' is not an array')
     if _isString(a):
         if _isString(b):

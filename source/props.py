@@ -5,4 +5,6 @@ from .path import path
 
 @_curry2
 def props(ps, obj):
-    return map(lambda p: path([p], obj), ps)
+    return map(lambda p: \
+        path([p], obj)
+    , ps)

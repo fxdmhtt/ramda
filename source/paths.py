@@ -11,7 +11,7 @@ def paths(pathsArray, obj):
         idx = 0
         while idx < len(paths):
             if val is None:
-                return None
+                return
             p = paths[idx]
             val = nth(p, val) if _isInteger(p) else val[p]
             idx += 1

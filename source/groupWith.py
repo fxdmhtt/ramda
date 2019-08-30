@@ -11,6 +11,6 @@ def groupWith(fn, list):
         nextidx = idx + 1
         while nextidx < len and fn(list[nextidx - 1], list[nextidx]):
             nextidx += 1
-        res.append(list[idx, nextidx])
+        res.append(list[idx:nextidx])
         idx = nextidx
     return res

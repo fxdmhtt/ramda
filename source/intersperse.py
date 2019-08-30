@@ -11,7 +11,7 @@ def intersperse(separator, list):
         if idx == length - 1:
             out.append(list[idx])
         else:
-            out.extend(list[idx], separator)
+            out.extend([list[idx], separator])
         idx += 1
     return out
 intersperse = _curry2(_checkForMethod('intersperse', intersperse))

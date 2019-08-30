@@ -9,7 +9,7 @@ def useWith(fn, transformers):
         args = []
         idx = 0
         while idx < len(transformers):
-            args.append(transformers[idx].call(arguments[idx]))
+            args.append(transformers[idx](arguments[idx]))
             idx += 1
-        return fn(*args.extend(arguments[len(transformers):]))
-    return curryN(transformers.length, function)
+        return fn(*(args + arguments[len(transformers):]))
+    return curryN(len(transformers), function)

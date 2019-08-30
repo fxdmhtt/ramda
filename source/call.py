@@ -3,5 +3,6 @@
 from .curry import curry
 
 @curry
-def call(fn, *args):
-    return fn(*args)
+def call(*arguments):
+    fn, *_ = arguments
+    return fn(*arguments[1:])

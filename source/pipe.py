@@ -9,6 +9,6 @@ def pipe(*arguments):
     if len(arguments) == 0:
         raise ValueError('pipe requires at least one argument')
     return _arity(
-        len(arguments[0]),
+        arguments[0].__code__.co_argcount,
         reduce(_pipe, arguments[0], tail(arguments))
     )
