@@ -5,10 +5,10 @@ from .internal._curry2 import _curry2
 @_curry2
 def splitWhen(pred, list):
     idx = 0
-    len = len(list)
+    len_ = len(list)
     prefix = []
 
-    while idx < len and not pred(list[idx]):
+    while idx < len_ and not pred(list[idx]):
         prefix.append(list[idx])
         idx += 1
 

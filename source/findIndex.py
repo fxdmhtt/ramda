@@ -6,8 +6,8 @@ from .internal._xfindIndex import _xfindIndex
 
 def findIndex(fn, list):
     idx = 0
-    len = len(list)
-    while idx < len:
+    len_ = len(list)
+    while idx < len_:
         if fn(list[idx]):
             return idx
         idx += 1

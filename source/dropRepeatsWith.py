@@ -8,10 +8,10 @@ from .last import last
 def dropRepeatsWith(pred, list):
     result =[]
     idx = 1
-    len = len(list)
-    if len != 0:
+    len_ = len(list)
+    if len_ != 0:
         result[0] = list[0]
-        while idx < len:
+        while idx < len_:
             if not pred(last(result), list[idx]):
                 result.append(list[idx])
             idx += 1

@@ -5,9 +5,9 @@ from .mean import mean
 
 @_curry1
 def median(list):
-    len = len(list)
-    if len == 0:
+    len_ = len(list)
+    if len_ == 0:
         return float('nan')
-    width = 2 - len % 2
-    idx = (len - width) / 2
+    width = 2 - len_ % 2
+    idx = (len_ - width) / 2
     return mean(sorted(list[0:])[idx:idx + width])

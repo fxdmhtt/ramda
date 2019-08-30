@@ -7,8 +7,8 @@ from .slice import slice
 
 def dropWhile(pred, xs):
     idx = 0
-    len = len(xs)
-    while idx < len and pred(xs[idx]):
+    len_ = len(xs)
+    while idx < len_ and pred(xs[idx]):
         idx += 1
     import sys
     return slice(idx, sys.maxsize, xs)

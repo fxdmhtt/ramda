@@ -6,8 +6,8 @@ from .internal._xfind import _xfind
 
 def find(fn, list):
     idx = 0
-    len = len(list)
-    while idx < len:
+    len_ = len(list)
+    while idx < len_:
         if fn(list[idx]):
             return list[idx]
         idx += 1

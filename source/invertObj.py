@@ -6,11 +6,11 @@ from .keys import keys
 @_curry1
 def invertObj(obj):
     props = keys(obj)
-    len = len(props)
+    len_ = len(props)
     idx = 0
     out = {}
 
-    while idx < len:
+    while idx < len_:
         key = props[idx]
         out[obj[key]] = key
         idx += 1

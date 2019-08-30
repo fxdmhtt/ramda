@@ -4,9 +4,9 @@ from ..type import type
 
 def _clone(value, refFrom, refTo, deep):
     def copy(copiedValue):
-        len = len(refFrom)
+        len_ = len(refFrom)
         idx = 0
-        while idx < len:
+        while idx < len_:
             if value == refFrom[idx]:
                 return refTo[idx]
             idx += 1

@@ -7,9 +7,9 @@ def omit(names, obj):
     result = {}
     index = {}
     idx = 0
-    len = len(names)
+    len_ = len(names)
 
-    while idx < len:
+    while idx < len_:
         index[names[idx]] = 1
         idx += 1
 

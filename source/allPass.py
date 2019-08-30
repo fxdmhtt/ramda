@@ -10,8 +10,8 @@ from .reduce import reduce
 def allPass(preds):
     def function(*arguments):
         idx = 0
-        len = len(preds)
-        while idx < len:
+        len_ = len(preds)
+        while idx < len_:
             if not preds[idx](*arguments):
                 return False
             idx += 1

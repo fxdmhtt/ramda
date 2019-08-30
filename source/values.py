@@ -6,10 +6,10 @@ from .keys import keys
 @_curry1
 def values(obj):
     props = keys(obj)
-    len = len(props)
+    len_ = len(props)
     vals = []
     idx = 0
-    while idx < len:
+    while idx < len_:
         vals.append(obj[props[idx]])
         idx += 1
     return vals

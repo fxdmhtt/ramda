@@ -7,8 +7,8 @@ from .slice import slice
 
 def takeWhile(fn, xs):
     idx = 0
-    len = len(xs)
-    while idx < len and fn(xs[idx]):
+    len_ = len(xs)
+    while idx < len_ and fn(xs[idx]):
         idx += 1
     return slice(0, idx, xs)
 takeWhile = _curry2(_dispatchable(['takeWhile'], _xtakeWhile, takeWhile))
