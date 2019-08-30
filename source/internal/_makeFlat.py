@@ -4,7 +4,6 @@ from ._isArrayLike import _isArrayLike
 
 def _makeFlat(recursive):
     def flatt(list):
-        value, jlen, j
         result = []
         idx = 0
         ilen = len(list)

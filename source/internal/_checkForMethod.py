@@ -10,7 +10,7 @@ def _checkForMethod(methodname, fn):
         obj = arguments[length - 1]
         return (
             fn(*arguments)
-            if _isArray(obj) or callable(obj[methodname])
+            if _isArray(obj) or not callable(getattr(obj, methodname, None))
             else obj[methodname](*arguments[0:length - 1])
         )
     return function

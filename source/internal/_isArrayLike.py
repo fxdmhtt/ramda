@@ -7,10 +7,11 @@ from ._isString import _isString
 @_curry1
 def _isArrayLike(x):
     if _isArray(x): return True
-    if (not x): return False
-    if not isinstance(x, dict): return False
+    if x is None: return False
+    from collections import Collection
+    if not isinstance(x, Collection): return False
     if _isString(x): return False
-    if x.get('length') == 0: return True
-    if x.get('length') > 0:
-        return 0 in x and (x.get('length') - 1) in x
+    if len(x) == 0: return True
+    if len(x) > 0:
+        return x.__getitem__(0) and x.__getitem__(len(x) - 1)
     return False

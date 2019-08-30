@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
 
 def _isInteger(n):
-    return isinstance(n, int)
+    from numbers import Integral
+    return isinstance(n, Integral)

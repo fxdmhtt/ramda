@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
 
 def _arrayFromIterator(iter):
-    return list(iter)
+    list = []
+    for next in iter:
+        list.append(next)
+    return list

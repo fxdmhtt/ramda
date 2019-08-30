@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import Object
-
 def _isPlaceholder(a):
-    return a != None and \
+    from . import Object
+    return a is not None and \
         isinstance(a, Object) and \
-        a.__dict__.get('@@functional/placeholder') == True
+        getattr(a, '@@functional/placeholder') == True

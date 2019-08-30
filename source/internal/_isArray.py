@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
 
 def _isArray(val):
-    return isinstance(val, (list, tuple))
+    from collections import Collection
+    return isinstance(val, Collection)
