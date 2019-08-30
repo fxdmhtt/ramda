@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import inspectfrom ._curry1 import _curry1
+from ._curry1 import _curry1
 from ._isPlaceholder import _isPlaceholder
 
 def _curry2(fn):
