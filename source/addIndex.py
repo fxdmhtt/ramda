@@ -12,7 +12,7 @@ def addIndex(fn):
         list = arguments[len(arguments) - 1]
         args = arguments[0:]
         def function(*arguments):
-            result = origFn(_concat(arguments, [idx, list]))
+            result = origFn(*_concat(arguments, [idx, list]))
             idx += 1
             return result
         args[0] = function
