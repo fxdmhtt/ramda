@@ -4,7 +4,7 @@ from ._curry1 import _curry1
 from ._isPlaceholder import _isPlaceholder
 
 def _curry2(fn):
-    from .internal import undefined
+    from . import undefined
     def f2(a=undefined, b=undefined):
         arguments = [a, b]
         while arguments and arguments[-1] is undefined:
