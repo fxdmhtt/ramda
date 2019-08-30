@@ -24,7 +24,7 @@ class Test_unary_functions_like_map(unittest.TestCase):
         eq(self, self.mapIndexed(self.squareEnds, [8, 6, 7, 5, 3, 0, 9]), [64, 6, 7, 5, 3, 0, 81])
 
     def test_acts_as_a_curried_function(self):
-        makeSquareEnds = self.mapIndexed(squareEnds)
+        makeSquareEnds = self.mapIndexed(self.squareEnds)
         eq(self, makeSquareEnds([8, 6, 7, 5, 3, 0, 9]), [64, 6, 7, 5, 3, 0, 81])
 
 class Test_binary_functions_like_reduce(unittest.TestCase):
@@ -44,7 +44,7 @@ class Test_binary_functions_like_reduce(unittest.TestCase):
 class Test_works_with_functions_like_all_that_do_not_typically_have_index_applied(unittest.TestCase):
     def setUp(self):
         self.allIndexed = R.addIndex(R.all)
-        self.superDiagonal = allIndexed(R.gt)
+        self.superDiagonal = self.allIndexed(R.gt)
 
     def test_passes_the_index_as_a_second_parameter(self):
         eq(self, self.superDiagonal([8, 6, 5, 4, 9]), true)
