@@ -7,6 +7,7 @@ from ...source.__ import __ as _
 from ...source.internal._curry2 import _curry2
 
 import unittest
+
 class Test__curry2(unittest.TestCase):
     def test_supports_placeholder(self):
         f = lambda a, b: [a, b]

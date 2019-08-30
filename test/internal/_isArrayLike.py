@@ -6,6 +6,7 @@ from ..shared.eq import eq
 from ...source.internal._isArrayLike import _isArrayLike
 
 import unittest
+
 class Test_isArrayLike(unittest.TestCase):
     def test_is_true_for_Arrays(self):
         eq(self, _isArrayLike([]), True)
