@@ -4,9 +4,8 @@ from ._curry1 import _curry1
 from ._isPlaceholder import _isPlaceholder
 
 def _curry2(fn):
-    from functools import wraps
-    @wraps(fn)
-    def f2(*arguments):
+    def f2(a=None, b=None):
+        arguments = list(filter(lambda x: x is not None, [a, b]))
         if len(arguments) == 0:
             return f2
         elif len(arguments) == 1:

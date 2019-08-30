@@ -3,9 +3,8 @@
 from ._isPlaceholder import _isPlaceholder
 
 def _curry1(fn):
-    from functools import wraps
-    @wraps(fn)
-    def f1(*arguments):
+    def f1(a=None):
+        arguments = list(filter(lambda x: x is not None, [a]))
         if len(arguments) == 0:
             return f1
         else:
