@@ -10,7 +10,7 @@ from .internal import length
 def flip(fn):
     @sig(names=['a', 'b'])
     def function(*arguments):
-        a, b, *_ = arguments
+        a, b, *_ = *arguments, None, None
         args = list(arguments[0:])
         args[0] = b
         args[1] = a

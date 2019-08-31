@@ -10,7 +10,7 @@ def _curry2(fn):
     @wraps(fn)
     @sig(names=['a', 'b'])
     def f2(*arguments):
-        a, b, *_ = arguments
+        a, b, *_ = *arguments, None, None
         if len(arguments) == 0:
             return f2
         elif len(arguments) == 1:

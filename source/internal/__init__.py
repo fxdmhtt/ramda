@@ -31,12 +31,19 @@ def length(fn):
     return len(inspect.signature(fn).parameters)
 
 def sig(fn=None, *, names=[]):
+    """设置类 js 方法的理论形参，实际形参一定是 *arguments"""
+
     if fn is None:
         from functools import partial
         return partial(sig, names=names)
 
     if hasattr(fn, 'length'):
         return fn
+
+    # 要求被 sig 包装的 fn 的参数
+    # 有且仅有一个 *arguments
+    parameters = inspect.signature(fn).parameters
+    assert len(parameters) == 1 and parameters.get('arguments') == Parameter('arguments', Parameter.VAR_POSITIONAL)
 
     parameters = [
         Parameter(name, Parameter.POSITIONAL_ONLY)
@@ -50,6 +57,8 @@ def sig(fn=None, *, names=[]):
     return fn
 
 def jsify(fn):
+    """包装普通方法成为类 js 方法，调用时将使任意实参适配上形参"""
+
     if hasattr(fn, 'length'):
         return fn
 
@@ -72,10 +81,12 @@ def jsify(fn):
     from functools import wraps
     @wraps(fn)
     def _JSFunction(*args):
-        if len(args) <= length or var_length:
+        if len(args) == length or var_length:
             return fn(*args)
-        else:
+        elif len(args) > length:
             return fn(*args[:length])
+        else:
+            return fn(*(args + (None,) * (length - len(args))))
 
     _JSFunction.__signature__ = sig.replace(parameters=parameters)
     _JSFunction.length = length

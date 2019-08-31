@@ -6,7 +6,7 @@ from . import sig
 
 @sig(names=['target'])
 def _objectAssign(*arguments):
-    target, *_ = arguments
+    target, *_ = *arguments, None
     if target is None:
         raise TypeError('Cannot convert undefined or null to object')
 
