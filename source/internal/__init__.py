@@ -31,7 +31,7 @@ del UserDict
 
 def _apply(fn, this, args=()):
     import types
-    if isinstance(fn, types.MethodType):
+    if isinstance(fn, types.MethodType) and isinstance(getattr(fn, '__self__'), JSObject):
         fn = _bind(fn, this)
     return fn(*args)
 
@@ -42,7 +42,11 @@ def _bind(fn, this):
     import types
     if isinstance(fn, types.MethodType):
         fn = fn.__func__
-    return types.MethodType(fn, this)
+
+    if this is not None:
+        return types.MethodType(fn, this)
+    else:
+        return fn
 
 import inspect
 from inspect import Parameter
