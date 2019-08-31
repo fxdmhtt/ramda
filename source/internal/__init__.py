@@ -15,7 +15,7 @@ class JSObject(UserDict):
         val = super().__getitem__(key)
         if callable(val):
             # 绑定 this
-            return val.__get__(self, JSObject)
+            return _bind(val, self)
         else:
             return val
 
@@ -28,6 +28,21 @@ del UserDict
 # JSObject
 
 # JSFunction
+
+def _apply(fn, this, args=()):
+    import types
+    if isinstance(fn, types.MethodType):
+        fn = _bind(fn, this)
+    return fn(*args)
+
+def _call(fn, this, *args):
+    return _apply(fn, this, args)
+
+def _bind(fn, this):
+    import types
+    if isinstance(fn, types.MethodType):
+        fn = fn.__func__
+    return types.MethodType(fn, this)
 
 import inspect
 from inspect import Parameter
@@ -108,13 +123,15 @@ if __name__ == "__main__":
     # test JSObject
 
     def fn(self, *args):
-        assert self is o
         assert args == (1, 'a')
-        return True
+        return self
 
     o = JSObject({'func': fn, '@@test/func': fn, 'val': True})
-    assert o.func(1, 'a')
-    assert o['func'](1, 'a')
-    assert o['@@test/func'](1, 'a')
+    assert o.func(1, 'a') is o
+    assert o['func'](1, 'a') is o
+    assert o['@@test/func'](1, 'a') is o
     assert o.val
     assert o['val']
+
+    fn = _bind(o.func, JSObject())
+    assert fn(1, 'a') is not o

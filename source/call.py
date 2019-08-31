@@ -3,9 +3,10 @@
 from .curry import curry
 
 from .internal import sig
+from .internal import _apply, JSObject
 
 @curry
 @sig(names=['fn'])
 def call(*arguments):
     fn, *_ = *arguments, None
-    return fn(*arguments[1:])
+    return _apply(fn, JSObject(), arguments[1:])

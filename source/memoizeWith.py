@@ -6,14 +6,15 @@ from .internal._has import _has
 
 from .internal import sig
 from .internal import length
+from .internal import _apply, JSObject
 
 @_curry2
 def memoizeWith(mFn, fn):
     cache = {}
     @sig
     def function(*arguments):
-        key = mFn(*arguments)
+        key = _apply(mFn, JSObject(), arguments)
         if not _has(key, cache):
-            cache[key] = fn(*arguments)
+            cache[key] = _apply(fn, JSObject(), arguments)
         return cache[key]
     return _arity(length(fn), function)

@@ -7,6 +7,7 @@ from .curryN import curryN
 from .internal import sig
 from .internal import length
 from .internal import jsify
+from .internal import _apply, JSObject
 
 @_curry1
 def addIndex(fn):
@@ -21,9 +22,9 @@ def addIndex(fn):
         @sig
         def function(*arguments):
             nonlocal idx
-            result = origFn(*_concat(arguments, [idx, list_]))
+            result = _apply(origFn, JSObject(), _concat(arguments, [idx, list_]))
             idx += 1
             return result
         args[0] = function
-        return fn(*args)
+        return _apply(fn, JSObject(), args)
     return curryN(length(fn), function)

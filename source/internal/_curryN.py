@@ -4,6 +4,7 @@ from ._arity import _arity
 from ._isPlaceholder import _isPlaceholder
 
 from . import sig
+from . import _apply, JSObject
 
 def _curryN(length, received, fn):
     from functools import wraps
@@ -27,7 +28,7 @@ def _curryN(length, received, fn):
                 left -= 1
             combinedIdx += 1
         return (
-            fn(*combined) if left <= 0
+            _apply(fn, JSObject(), combined) if left <= 0
             else _arity(left, _curryN(length, combined, fn))
         )
     return function

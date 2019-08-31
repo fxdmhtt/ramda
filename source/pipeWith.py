@@ -9,6 +9,7 @@ from .identity import identity
 
 from .internal import sig
 from .internal import length
+from .internal import _call, _apply, JSObject
 
 @_curry2
 def pipeWith(xf, list):
@@ -21,8 +22,8 @@ def pipeWith(xf, list):
     return _arity(length(headList), sig(lambda *arguments: \
         _reduce(
             lambda result, f: \
-                xf(f, result),
-            headList(*arguments),
+                _call(xf, JSObject(), f, result),
+            _apply(headList, JSObject(), arguments),
             tailList
         ))
     )

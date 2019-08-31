@@ -5,6 +5,7 @@ from .curryN import curryN
 
 from .internal import sig
 from .internal import length
+from .internal import _apply, JSObject
 
 @_curry1
 def flip(fn):
@@ -14,5 +15,5 @@ def flip(fn):
         args = list(arguments[0:])
         args[0] = b
         args[1] = a
-        return fn(*args)
+        return _apply(fn, JSObject(), args)
     return curryN(length(fn), function)

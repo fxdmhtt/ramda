@@ -7,6 +7,7 @@ from .max import max
 from .reduce import reduce
 
 from .internal import sig
+from .internal import _apply, JSObject
 
 @_curry1
 def cond(pairs):
@@ -19,7 +20,7 @@ def cond(pairs):
     def function(*arguments):
         idx = 0
         while idx < len(pairs):
-            if pairs[idx][0](*arguments):
-                return pairs[idx][1](*arguments)
+            if _apply(pairs[idx][0], JSObject(), arguments):
+                return _apply(pairs[idx][1], JSObject(), arguments)
             idx += 1
     return _arity(arity, function)

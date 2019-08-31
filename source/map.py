@@ -10,12 +10,13 @@ from .keys import keys
 
 from .internal import sig
 from .internal import length
+from .internal import _call, _apply, JSObject
 
 @_curry2
 def map(fn, functor):
     if callable(functor):
         return curryN(length(functor), sig(lambda *arguments: \
-            fn(functor(*arguments)))
+            _call(fn, JSObject(), _apply(functor, JSObject(), arguments)))
         )
     elif isinstance(functor, dict):
         return _reduce(lambda acc, key: \

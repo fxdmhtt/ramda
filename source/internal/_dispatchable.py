@@ -4,6 +4,7 @@ from ._isArray import _isArray
 from ._isTransformer import _isTransformer
 
 from . import sig
+from . import _apply, JSObject
 
 def _dispatchable(methodNames, xf, fn):
     from functools import wraps
@@ -18,10 +19,10 @@ def _dispatchable(methodNames, xf, fn):
             idx = 0
             while idx < len(methodNames):
                 if callable(getattr(obj, methodNames[idx], None)):
-                    return obj[methodNames[idx]](*args)
+                    return _apply(obj[methodNames[idx]], obj, args)
                 idx += 1
             if _isTransformer(obj):
-                transducer = xf(*args)
+                transducer = _apply(xf, None, args)
                 return transducer(obj)
-        return fn(*arguments)
+        return _apply(fn, JSObject(), arguments)
     return function
