@@ -11,6 +11,14 @@ class JSObject(UserDict):
     def __getattr__(self, name):
         return self[name]
 
+    def __getitem__(self, key):
+        val = super().__getitem__(key)
+        if callable(val):
+            # 绑定 this
+            return val.__get__(self, JSObject)
+        else:
+            return val
+
     @property
     def prototype(self):
         return self.data
@@ -94,3 +102,19 @@ def jsify(fn):
     return _JSFunction
 
 # JSFunction
+
+
+if __name__ == "__main__":
+    # test JSObject
+
+    def fn(self, *args):
+        assert self is o
+        assert args == (1, 'a')
+        return True
+
+    o = JSObject({'func': fn, '@@test/func': fn, 'val': True})
+    assert o.func(1, 'a')
+    assert o['func'](1, 'a')
+    assert o['@@test/func'](1, 'a')
+    assert o.val
+    assert o['val']
