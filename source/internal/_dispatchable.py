@@ -3,9 +3,12 @@
 from ._isArray import _isArray
 from ._isTransformer import _isTransformer
 
+from . import sig
+
 def _dispatchable(methodNames, xf, fn):
     from functools import wraps
     @wraps(fn)
+    @sig
     def function(*arguments):
         if len(arguments) == 0:
             return fn()

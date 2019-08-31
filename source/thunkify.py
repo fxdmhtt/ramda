@@ -3,11 +3,14 @@
 from .curryN import curryN
 from .internal._curry1 import _curry1
 
+from .internal import sig
+from .internal import length
+
 @_curry1
 def thunkify(fn):
+    @sig
     def createThunk(*arguments):
         fnArgs = arguments
-        return lambda *_: \
-            fn(*fnArgs)
-    from .internal import getArgCount
-    return curryN(getArgCount(fn), createThunk)
+        return sig(lambda *_: \
+            fn(*fnArgs))
+    return curryN(length(fn), createThunk)

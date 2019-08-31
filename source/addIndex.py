@@ -4,16 +4,21 @@ from .internal._concat import _concat
 from .internal._curry1 import _curry1
 from .curryN import curryN
 
+from .internal import sig
+from .internal import length
+from .internal import jsify
+
 @_curry1
 def addIndex(fn):
     from functools import wraps
     @wraps(fn)
+    @sig
     def function(*arguments):
         idx = 0
-        from .internal import wrapToJSFunction
-        origFn = wrapToJSFunction(arguments[0])
+        origFn = jsify(arguments[0])
         list_ = arguments[len(arguments) - 1]
         args = list(arguments[0:])
+        @sig
         def function(*arguments):
             nonlocal idx
             result = origFn(*_concat(arguments, [idx, list_]))
@@ -21,5 +26,4 @@ def addIndex(fn):
             return result
         args[0] = function
         return fn(*args)
-    from .internal import getArgCount
-    return curryN(getArgCount(fn), function)
+    return curryN(length(fn), function)

@@ -5,8 +5,11 @@ from .internal._isFunction import _isFunction
 from .curryN import curryN
 from .toString import toString
 
+from .internal import sig
+
 @_curry2
 def invoker(arity, method):
+    @sig
     def function(*arguments):
         target = arguments[arity]
         if target is not None and _isFunction(target[method]):

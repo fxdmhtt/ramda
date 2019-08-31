@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# JSObject
+
 from collections import UserDict
 
 class JSObject(UserDict):
@@ -15,45 +17,56 @@ class JSObject(UserDict):
 
 del UserDict
 
-def getArgCount(fn):
+# JSObject
+
+# JSFunction
+
+import inspect
+from inspect import Parameter
+
+def length(fn):
     if hasattr(fn, 'length'):
         return fn.length
 
-    import inspect
     return len(inspect.signature(fn).parameters)
 
-def defJSFunction(fn, names):
+def sig(fn=None, *, names=[]):
+    if fn is None:
+        from functools import partial
+        return partial(sig, names=names)
+
     if hasattr(fn, 'length'):
         return fn
 
-    import inspect
-    fn.__signature__ = inspect.signature(fn).replace(parameters=[
-        inspect.Parameter(name, inspect.Parameter.POSITIONAL_ONLY)
+    parameters = [
+        Parameter(name, Parameter.POSITIONAL_ONLY)
         for name in names
-    ])
-    fn.length = len(names)
+    ]
+    length = len(parameters)
+
+    fn.__signature__ = inspect.signature(fn).replace(parameters=parameters)
+    fn.length = length
 
     return fn
 
-def wrapToJSFunction(fn):
+def jsify(fn):
     if hasattr(fn, 'length'):
         return fn
 
-    import inspect
     sig = inspect.signature(fn)
 
     parameters = []
     length = 0
     var_length = False  # 支持变长参数
     for parameter in sig.parameters.values():
-        if parameter.kind is inspect.Parameter.POSITIONAL_ONLY \
-        or parameter.kind is inspect.Parameter.POSITIONAL_OR_KEYWORD:
+        if parameter.kind is Parameter.POSITIONAL_ONLY \
+        or parameter.kind is Parameter.POSITIONAL_OR_KEYWORD:
             parameters.append(parameter)
             length += 1
-        elif parameter.kind is inspect.Parameter.VAR_POSITIONAL:
+        elif parameter.kind is Parameter.VAR_POSITIONAL:
             parameters.append(parameter)
             var_length = True
-        elif parameter.kind is inspect.Parameter.KEYWORD_ONLY:
+        elif parameter.kind is Parameter.KEYWORD_ONLY:
             raise ValueError('Unsupported function')
 
     from functools import wraps
@@ -68,3 +81,5 @@ def wrapToJSFunction(fn):
     _JSFunction.length = length
 
     return _JSFunction
+
+# JSFunction

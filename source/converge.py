@@ -7,14 +7,17 @@ from .max import max
 from .pluck import pluck
 from .reduce import reduce
 
+from .internal import sig
+from .internal import length
+from .internal import jsify
+
 @_curry2
 def converge(after, fns):
-    from .internal import wrapToJSFunction
-    fns = [wrapToJSFunction(fn) for fn in fns]
+    fns = [jsify(fn) for fn in fns]
+    @sig
     def function(*arguments):
         args = arguments
         return after(*_map(lambda fn: \
             fn(*args)
         , fns))
-    from .internal import getArgCount
-    return curryN(reduce(max, 0, (getArgCount(fn) for fn in fns)), function)
+    return curryN(reduce(max, 0, (length(fn) for fn in fns)), function)

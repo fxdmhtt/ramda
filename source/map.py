@@ -8,12 +8,14 @@ from .internal._xmap import _xmap
 from .curryN import curryN
 from .keys import keys
 
+from .internal import sig
+from .internal import length
+
 @_curry2
 def map(fn, functor):
     if callable(functor):
-        from .internal import getArgCount
-        return curryN(getArgCount(functor), lambda *arguments: \
-            fn(functor(*arguments))
+        return curryN(length(functor), sig(lambda *arguments: \
+            fn(functor(*arguments)))
         )
     elif isinstance(functor, dict):
         return _reduce(lambda acc, key: \

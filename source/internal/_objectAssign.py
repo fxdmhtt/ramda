@@ -2,6 +2,9 @@
 
 from ._has import _has
 
+from . import sig
+
+@sig(names=['target'])
 def _objectAssign(*arguments):
     target, *_ = arguments
     if target is None:

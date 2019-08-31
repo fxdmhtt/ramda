@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from . import sig
+
 def _complement(f):
-    return lambda *arguments: \
-        not f(*arguments)
+    return sig(lambda *arguments: \
+        not f(*arguments))

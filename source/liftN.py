@@ -6,9 +6,11 @@ from .ap import ap
 from .curryN import curryN
 from .map import map
 
+from .internal import sig
+
 @_curry2
 def liftN(arity, fn):
     lifted = curryN(arity, fn)
-    return curryN(arity, lambda *arguments: \
-        _reduce(ap, map(lifted, arguments[0]), arguments[1:])
+    return curryN(arity, sig(lambda *arguments: \
+        _reduce(ap, map(lifted, arguments[0]), arguments[1:]))
     )

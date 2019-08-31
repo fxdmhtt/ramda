@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from . import sig
+
 def _pipe(f, g):
-    return lambda *arguments: \
-        g(f(*arguments))
+    return sig(lambda *arguments: \
+        g(f(*arguments)))

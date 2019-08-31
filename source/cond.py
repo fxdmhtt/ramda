@@ -6,6 +6,8 @@ from .map import map
 from .max import max
 from .reduce import reduce
 
+from .internal import sig
+
 @_curry1
 def cond(pairs):
     arity = reduce(
@@ -13,6 +15,7 @@ def cond(pairs):
         0,
         map(lambda pair: len(pair[0]), pairs)
     )
+    @sig
     def function(*arguments):
         idx = 0
         while idx < len(pairs):

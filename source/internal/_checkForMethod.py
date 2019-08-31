@@ -2,9 +2,12 @@
 
 from ._isArray import _isArray
 
+from . import sig
+
 def _checkForMethod(methodname, fn):
     from functools import wraps
     @wraps(fn)
+    @sig
     def function(*arguments):
         length = len(arguments)
         if length == 0:

@@ -7,6 +7,9 @@ from .internal._reduce import _reduce
 from .tail import tail
 from .identity import identity
 
+from .internal import sig
+from .internal import length
+
 @_curry2
 def pipeWith(xf, list):
     if len(list) <= 0:
@@ -15,12 +18,11 @@ def pipeWith(xf, list):
     headList = head(list)
     tailList = tail(list)
 
-    from .internal import getArgCount
-    return _arity(getArgCount(headList), lambda *arguments: \
+    return _arity(length(headList), sig(lambda *arguments: \
         _reduce(
             lambda result, f: \
                 xf(f, result),
             headList(*arguments),
             tailList
-        )
+        ))
     )

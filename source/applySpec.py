@@ -10,6 +10,10 @@ from .reduce import reduce
 from .keys import keys
 from .values import values
 
+from .internal import sig
+from .internal import length
+from .internal import jsify
+
 def mapValues(fn, obj):
     return (
         map(fn, obj) if _isArray(obj)
@@ -23,17 +27,16 @@ def mapValues(fn, obj):
 
 @_curry1
 def applySpec(spec):
-    from .internal import wrapToJSFunction
     spec = mapValues(
-        lambda v: wrapToJSFunction(v) if callable(v) else applySpec(v),
+        lambda v: jsify(v) if callable(v) else applySpec(v),
         spec
     )
 
+    @sig
     def function(*arguments):
         args = arguments
         return mapValues(lambda f: apply(f, args), spec)
-    from .internal import getArgCount
     return curryN(
-        reduce(max, 0, (getArgCount(fn) for fn in values(spec))),
+        reduce(max, 0, (length(fn) for fn in values(spec))),
         function
     )

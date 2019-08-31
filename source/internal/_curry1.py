@@ -2,16 +2,16 @@
 
 from ._isPlaceholder import _isPlaceholder
 
+from . import sig
+
 def _curry1(fn):
     from functools import wraps
     @wraps(fn)
+    @sig(names=['a'])
     def f1(*arguments):
-        if len(arguments) == 0:
+        a, *_ = arguments
+        if len(arguments) == 0 or _isPlaceholder(a):
             return f1
         else:
-            a, *_ = arguments
-            return (
-                f1 if _isPlaceholder(a)
-                else fn(a)
-            )
+            return fn(*arguments)
     return f1

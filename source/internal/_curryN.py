@@ -3,9 +3,12 @@
 from ._arity import _arity
 from ._isPlaceholder import _isPlaceholder
 
+from . import sig
+
 def _curryN(length, received, fn):
     from functools import wraps
     @wraps(fn)
+    @sig
     def function(*arguments):
         combined = []
         argsIdx = 0

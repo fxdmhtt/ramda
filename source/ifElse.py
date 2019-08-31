@@ -3,10 +3,12 @@
 from .internal._curry3 import _curry3
 from .curryN import curryN
 
+from .internal import sig
+from .internal import length
+
 @_curry3
 def ifElse(condition, onTrue, onFalse):
-    from .internal import getArgCount
-    return curryN(max(getArgCount(condition), getArgCount(onTrue), getArgCount(onFalse)),
-        lambda *arguments: \
-            onTrue(*arguments) if condition(*arguments) else onFalse(*arguments)
+    return curryN(max(length(condition), length(onTrue), length(onFalse)),
+        sig(lambda *arguments: \
+            onTrue(*arguments) if condition(*arguments) else onFalse(*arguments))
     )
