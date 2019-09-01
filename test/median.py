@@ -8,7 +8,6 @@ from .shared.eq import eq
 import unittest
 
 class Test_median(unittest.TestCase):
-
     def test_returns_middle_value_of_an_odd_length_list(self):
         eq(self, R.median([2]), 2.0)
         eq(self, R.median([2, 9, 7]), 7.0)

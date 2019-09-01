@@ -7,12 +7,9 @@ from ..keys import keys
 from ..reject import reject
 
 def _toString(x, seen):
-    def recur(y):
-        xs = seen.append(x)
-        return '<Circular>' if _includes(y, xs) else _toString(y, xs)
+    # ignore: recur
 
-    def mapPairs(obj, keys):
-        return _map(lambda k: _quote(k) + ': ' + recur(obj[k]), sorted(keys[:]))
+    # ignore: mapPairs
 
     import datetime
     import numbers
@@ -29,7 +26,6 @@ def _toString(x, seen):
     elif isinstance(x, str):
         return repr(x)
     else:
-        if callable(getattr(x, '__str__', None)):
-            repr_ = x.__str__()
-            return repr_
-        return '{' + ', '.join(mapPairs(x, keys(x))) + '}'
+        # ignore toString
+        
+        return str(x)
