@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xfindLastIndex import _xfindLastIndex
+_xfindLastIndex = None
 
 def findLastIndex(fn, list):
     idx = len(list) - 1

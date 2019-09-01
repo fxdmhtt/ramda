@@ -136,7 +136,7 @@ from .mergeWith import mergeWith
 from .mergeWithKey import mergeWithKey
 from .min import min
 from .minBy import minBy
-from .modulo import modulo
+# from .modulo import modulo
 from .move import move
 from .multiply import multiply
 from .nAry import nAry
@@ -181,8 +181,8 @@ from .range import range
 from .reduce import reduce
 from .reduceBy import reduceBy
 from .reduceRight import reduceRight
-from .reduceWhile import reduceWhile
-from .reduced import reduced
+# from .reduceWhile import reduceWhile
+# from .reduced import reduced
 from .reject import reject
 from .remove import remove
 from .repeat import repeat
@@ -219,7 +219,7 @@ from .toPairs import toPairs
 from .toPairsIn import toPairsIn
 from .toString import toString
 from .toUpper import toUpper
-from .transduce import transduce
+# from .transduce import transduce
 from .transpose import transpose
 from .traverse import traverse
 from .trim import trim

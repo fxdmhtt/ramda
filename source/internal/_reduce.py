@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from ._isArrayLike import _isArrayLike
-from ._xwrap import _xwrap
-from ..bind import bind
+_xwrap = None
+# from ..bind import bind
 
 # ignore: _arrayReduce
 

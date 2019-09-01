@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xdropRepeatsWith import _xdropRepeatsWith
+_xdropRepeatsWith = None
 from .last import last
 
 def dropRepeatsWith(pred, list):

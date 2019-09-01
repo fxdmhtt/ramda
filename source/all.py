@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xall import _xall
+_xall = None
 
 def all(fn, list):
     idx = 0

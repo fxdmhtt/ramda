@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ._isArray import _isArray
-from ._isTransformer import _isTransformer
+# from ._isTransformer import _isTransformer
 
 from . import sig
 
@@ -20,8 +20,8 @@ def _dispatchable(methodNames, xf, fn):
                 if callable(getattr(obj, methodNames[idx], None)):
                     return obj[methodNames[idx]](*args)
                 idx += 1
-            if _isTransformer(obj):
-                transducer = xf(*args)
-                return transducer(obj)
+            # if _isTransformer(obj):
+            #     transducer = xf(*args)
+            #     return transducer(obj)
         return fn(*arguments)
     return function

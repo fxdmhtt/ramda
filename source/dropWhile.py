@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xdropWhile import _xdropWhile
+_xdropWhile = None
 from .slice import slice
 
 def dropWhile(pred, xs):

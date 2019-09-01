@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xfindIndex import _xfindIndex
+_xfindIndex = None
 
 def findIndex(fn, list):
     idx = 0

@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xdrop import _xdrop
+_xdrop = None
 from .slice import slice
 
 @_curry2

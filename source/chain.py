@@ -3,7 +3,7 @@
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
 from .internal._makeFlat import _makeFlat
-from .internal._xchain import _xchain
+_xchain = None
 from .map import map
 
 def chain(fn, monad):

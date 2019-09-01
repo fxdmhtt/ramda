@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xtap import _xtap
+_xtap = None
 
 def tap(fn, x):
     fn(x)

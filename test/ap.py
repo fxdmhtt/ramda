@@ -28,8 +28,8 @@ class Test_ap(unittest.TestCase):
         eq(self, R.ap(R.add)(g)(10), 10 + (10 * 2))
 
     def test_dispatches_to_the_passed_object_s_ap_method_when_values_is_a_non_Array_object(self):
-        obj = {'ap': lambda n: 'called ap with ' + n}
-        eq(self, R.ap(obj, 10), obj.ap(10))
+        obj = {'ap': lambda n: 'called ap with ' + str(n)}
+        eq(self, R.ap(obj, 10), obj['ap'](10))
 
 
 if __name__ == '__main__':

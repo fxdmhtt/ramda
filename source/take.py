@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-from .internal._xtake import _xtake
+_xtake = None
 from .slice import slice
 
 def take(n, xs):

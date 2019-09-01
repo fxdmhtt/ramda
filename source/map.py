@@ -4,7 +4,7 @@ from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
 from .internal._map import _map
 from .internal._reduce import _reduce
-from .internal._xmap import _xmap
+_xmap = None
 from .curryN import curryN
 from .keys import keys
 

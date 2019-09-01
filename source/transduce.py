@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .internal._reduce import _reduce
-from .internal._xwrap import _xwrap
+# from .internal._xwrap import _xwrap
 from .curryN import curryN
 
 def transduce(xf, fn, acc, list):
