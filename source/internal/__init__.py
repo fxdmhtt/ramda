@@ -1,50 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# JSObject
-
-from collections import UserDict
-
-class JSObject(UserDict):
-    def __init__(self, initialdata=None):
-        super().__init__(initialdata)
-
-    def __getattr__(self, name):
-        return self[name]
-
-    def __getitem__(self, key):
-        try:
-            return super().__getitem__(key)
-        except KeyError:
-            return getattr(self, key)
-
-del UserDict
-
-# JSObject
-
 # JSFunction
-
-def _apply(fn, this, args=()):
-    import types
-    try:
-        if isinstance(fn, types.MethodType) and isinstance(getattr(fn, '__self__'), JSObject) \
-        or inspect.signature(fn).parameters.get('self'):
-            fn = _bind(fn, this)
-    except ValueError:  # builtin function
-        pass
-    return fn(*args)
-
-def _call(fn, this, *args):
-    return _apply(fn, this, args)
-
-def _bind(fn, this):
-    import types
-    if isinstance(fn, types.MethodType):
-        fn = fn.__func__
-
-    if this is not None:
-        return types.MethodType(fn, this)
-    else:
-        return fn
 
 import inspect
 from inspect import Parameter
@@ -119,21 +75,3 @@ def jsify(fn):
     return _JSFunction
 
 # JSFunction
-
-
-if __name__ == "__main__":
-    # test JSObject
-
-    def fn(self, *args):
-        assert args == (1, 'a')
-        return self
-
-    o = JSObject({'func': fn, '@@test/func': fn, 'val': True})
-    assert o.func(1, 'a') is o
-    assert o['func'](1, 'a') is o
-    assert o['@@test/func'](1, 'a') is o
-    assert o.val
-    assert o['val']
-
-    fn = _bind(o.func, JSObject())
-    assert fn(1, 'a') is not o

@@ -6,14 +6,13 @@ from .internal._curry2 import _curry2
 
 from .internal import sig
 from .internal import length
-from .internal import _apply, JSObject
 
 @_curry2
 def tryCatch(tryer, catcher):
     @sig
     def function(*arguments):
         try:
-            return _apply(tryer, JSObject(), arguments)
+            return tryer(*arguments)
         except Exception as e:
-            return _apply(catcher, JSObject(), _concat([e], arguments))
+            return catcher(*_concat([e], arguments))
     return _arity(length(tryer), function)

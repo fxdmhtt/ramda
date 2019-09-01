@@ -4,7 +4,6 @@ from .internal._curry2 import _curry2
 from .curryN import curryN
 
 from .internal import sig
-from .internal import _call, _apply, JSObject
 
 @_curry2
 def useWith(fn, transformers):
@@ -13,7 +12,7 @@ def useWith(fn, transformers):
         args = []
         idx = 0
         while idx < len(transformers):
-            args.append(_call(transformers[idx], JSObject(), arguments[idx]))
+            args.append(transformers[idx](arguments[idx]))
             idx += 1
-        return _apply(fn, JSObject(), args + arguments[len(transformers):])
+        return fn(*args + arguments[len(transformers):])
     return curryN(len(transformers), function)

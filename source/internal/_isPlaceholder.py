@@ -6,7 +6,6 @@ def _isPlaceholder(a):
 
     # ignore:
 
-    # from . import JSObject
     # return a is not None and \
-    #     isinstance(a, JSObject) and \
+    #     isinstance(a, dict) and \
     #     a['@@functional/placeholder'] == True

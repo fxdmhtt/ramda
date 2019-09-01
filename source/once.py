@@ -5,7 +5,6 @@ from .internal._curry1 import _curry1
 
 from .internal import sig
 from .internal import length
-from .internal import _apply, JSObject
 
 @_curry1
 def once(fn):
@@ -17,6 +16,6 @@ def once(fn):
         if called:
             return result
         called = True
-        result = _apply(fn, JSObject(), arguments)
+        result = fn(*arguments)
         return result
     return _arity(length(fn), function)

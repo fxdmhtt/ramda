@@ -22,7 +22,7 @@ from .ascend import ascend
 from .assoc import assoc
 from .assocPath import assocPath
 from .binary import binary
-from .bind import bind
+# from .bind import bind
 from .both import both
 from .call import call
 from .chain import chain

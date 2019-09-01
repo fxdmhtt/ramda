@@ -9,7 +9,6 @@ from .reduce import reduce
 from .internal import sig
 from .internal import length
 from .internal import jsify
-from .internal import _apply, JSObject
 
 @_curry1
 def allPass(preds):
@@ -19,7 +18,7 @@ def allPass(preds):
         idx = 0
         len_ = len(preds)
         while idx < len_:
-            if not _apply(preds[idx], JSObject(), arguments):
+            if not preds[idx](*arguments):
                 return False
             idx += 1
         return True

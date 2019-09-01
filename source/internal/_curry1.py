@@ -3,7 +3,6 @@
 from ._isPlaceholder import _isPlaceholder
 
 from . import sig
-from . import _apply, JSObject
 
 def _curry1(fn):
     from functools import wraps
@@ -13,5 +12,5 @@ def _curry1(fn):
         if len(arguments) == 0 or _isPlaceholder(a):
             return f1
         else:
-            return _apply(fn, JSObject(), arguments)
+            return fn(*arguments)
     return f1

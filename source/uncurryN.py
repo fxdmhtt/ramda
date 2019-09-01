@@ -5,7 +5,6 @@ from .curryN import curryN
 
 from .internal import sig
 from .internal import length
-from .internal import _apply, JSObject
 
 @_curry2
 def uncurryN(depth, fn):
@@ -16,7 +15,7 @@ def uncurryN(depth, fn):
         idx = 0
         while currentDepth <= depth and callable(value):
             endIdx = len(arguments) if currentDepth == depth else idx + length(value)
-            value = _apply(value, JSObject(), arguments[idx:endIdx])
+            value = value(*arguments[idx:endIdx])
             currentDepth += 1
             idx = endIdx
         return value
