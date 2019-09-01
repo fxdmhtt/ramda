@@ -12,16 +12,10 @@ class JSObject(UserDict):
         return self[name]
 
     def __getitem__(self, key):
-        val = super().__getitem__(key)
-        if callable(val):
-            # 绑定 this
-            return _bind(val, self)
-        else:
-            return val
-
-    @property
-    def prototype(self):
-        return self.data
+        try:
+            return super().__getitem__(key)
+        except KeyError:
+            return getattr(self, key)
 
 del UserDict
 
@@ -31,8 +25,12 @@ del UserDict
 
 def _apply(fn, this, args=()):
     import types
-    if isinstance(fn, types.MethodType) and isinstance(getattr(fn, '__self__'), JSObject):
-        fn = _bind(fn, this)
+    try:
+        if isinstance(fn, types.MethodType) and isinstance(getattr(fn, '__self__'), JSObject) \
+        or inspect.signature(fn).parameters.get('self'):
+            fn = _bind(fn, this)
+    except ValueError:  # builtin function
+        pass
     return fn(*args)
 
 def _call(fn, this, *args):

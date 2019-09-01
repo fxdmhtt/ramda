@@ -7,7 +7,6 @@ from . import _apply, JSObject
 
 def _curry1(fn):
     from functools import wraps
-    @wraps(fn)
     @sig(names=['a'])
     def f1(*arguments):
         a, *_ = *arguments, None

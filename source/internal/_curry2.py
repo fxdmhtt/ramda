@@ -7,7 +7,6 @@ from . import sig
 
 def _curry2(fn):
     from functools import wraps
-    @wraps(fn)
     @sig(names=['a', 'b'])
     def f2(*arguments):
         a, b, *_ = *arguments, None, None

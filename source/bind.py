@@ -10,5 +10,5 @@ from .internal import _apply
 @_curry2
 def bind(fn, thisObj):
     return _arity(length(fn), sig(lambda *arguments: \
-        apply(fn, thisObj, arguments))
+        _apply(fn, thisObj, arguments))
     )

@@ -8,7 +8,6 @@ from . import sig
 
 def _curry3(fn):
     from functools import wraps
-    @wraps(fn)
     @sig(names=['a', 'b', 'c'])
     def f3(*arguments):
         a, b, c, *_ = *arguments, None, None, None
