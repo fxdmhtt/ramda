@@ -5,7 +5,7 @@ from .internal._dispatchable import _dispatchable
 from .internal._filter import _filter
 from .internal._isObject import _isObject
 from .internal._reduce import _reduce
-_xfilter = None
+from .internal._xfilter import _xfilter
 from .keys import keys
 
 def filter(pred, filterable):

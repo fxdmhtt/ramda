@@ -92,7 +92,7 @@ from .insert import insert
 from .insertAll import insertAll
 from .intersection import intersection
 from .intersperse import intersperse
-from .into import into
+# from .into import into
 from .invert import invert
 from .invertObj import invertObj
 from .invoker import invoker

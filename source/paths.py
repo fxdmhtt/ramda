@@ -13,7 +13,7 @@ def paths(pathsArray, obj):
             if val is None:
                 return
             p = paths[idx]
-            val = nth(p, val) if _isInteger(p) else val[p]
+            val = nth(p, val) if _isInteger(p) else val.get(p)
             idx += 1
         return val
     return list(map(function, pathsArray))

@@ -2,7 +2,7 @@
 
 from .internal._curry1 import _curry1
 from .internal._dispatchable import _dispatchable
-_xdropRepeatsWith = lambda x: x
+from .internal._xdropRepeatsWith import _xdropRepeatsWith
 from .dropRepeatsWith import dropRepeatsWith
 from .equals import equals
 

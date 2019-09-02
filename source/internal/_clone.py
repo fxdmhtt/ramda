@@ -15,6 +15,6 @@ def _clone(value, refFrom, refTo, deep):
         for key in value:
             copiedValue[key] = _clone(value[key], refFrom, refTo, True) if deep else value[key]
         return copiedValue
-    if type(value) == 'dict': return copy({})
-    if type(value) == 'list': return copy([])
+    if isinstance(value, dict): return copy({})
+    if isinstance(value, list): return copy([])
     return value

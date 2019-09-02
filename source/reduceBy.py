@@ -5,7 +5,7 @@ from .internal._curryN import _curryN
 from .internal._dispatchable import _dispatchable
 from .internal._has import _has
 from .internal._reduce import _reduce
-_xreduceBy = None
+from .internal._xreduceBy import _xreduceBy
 
 def reduceBy(valueFn, valueAcc, keyFn, list):
     def function(acc, elt):

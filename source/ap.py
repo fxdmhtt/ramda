@@ -9,8 +9,6 @@ from .map import map
 def ap(applyF, applyX):
     from collections import Mapping
     return (
-        # applyX['fantasy-land/ap'](applyF) if callable(applyX['fantasy-land/ap'])
-        # else
         applyF.ap(applyX) if callable(getattr(applyF, 'ap', None))
         else applyF['ap'](applyX) if callable(isinstance(applyF, Mapping) and applyF.get('ap'))
         else (lambda x: applyF(x)(applyX(x))) if callable(applyF)

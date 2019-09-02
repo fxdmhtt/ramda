@@ -7,13 +7,15 @@ from .max import max
 from .reduce import reduce
 
 from .internal import sig
+from .internal import jsify
 
 @_curry1
 def cond(pairs):
+    pairs = [(jsify(k), jsify(v)) for k, v in pairs]
     arity = reduce(
         max,
         0,
-        map(lambda pair: len(pair[0]), pairs)
+        map(lambda pair: pair[0].length, pairs)
     )
     @sig
     def function(*arguments):

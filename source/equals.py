@@ -5,4 +5,4 @@ from .internal._equals import _equals
 
 @_curry2
 def equals(a, b):
-    return _equal(a, b, [], [])
+    return _equals(a, b, [], [])

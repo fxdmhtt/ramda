@@ -2,7 +2,7 @@
 
 from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
-_xtakeWhile = None
+from .internal._xtakeWhile import _xtakeWhile
 from .slice import slice
 
 def takeWhile(fn, xs):

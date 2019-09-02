@@ -4,7 +4,7 @@ from .internal._curry2 import _curry2
 from .internal._dispatchable import _dispatchable
 from .internal._map import _map
 from .internal._reduce import _reduce
-_xmap = None
+from .internal._xmap import _xmap
 from .curryN import curryN
 from .keys import keys
 
@@ -26,4 +26,4 @@ def map(fn, functor):
         , {}, keys(functor))
     else:
         return _map(fn, functor)
-map = _curry2(_dispatchable(['fantasy-land/map', 'map'], _xmap, map))
+map = _curry2(_dispatchable(['map'], _xmap, map))

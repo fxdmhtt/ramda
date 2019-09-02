@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ._isArray import _isArray
-# from ._isTransformer import _isTransformer
+from ._isTransformer import _isTransformer
 
 from . import sig
 
@@ -18,6 +18,8 @@ def _dispatchable(methodNames, xf, fn):
             idx = 0
             while idx < len(methodNames):
                 if callable(getattr(obj, methodNames[idx], None)):
+                    return getattr(obj, methodNames[idx])(*args)
+                if isinstance(obj, dict) and obj.get(methodNames[idx]):
                     return obj[methodNames[idx]](*args)
                 idx += 1
             # if _isTransformer(obj):
