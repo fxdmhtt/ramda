@@ -8,6 +8,9 @@ from .equals import equals
 def lastIndexOf(target, xs):
     # ignore: native lastIndexOf
 
+    if callable(getattr(xs, 'lastIndexOf', None)) and not _isArray(xs):
+        return xs.lastIndexOf(target)
+
     idx = len(xs) - 1
     while idx >= 0:
         if equals(xs[idx], target):

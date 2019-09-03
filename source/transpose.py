@@ -10,8 +10,8 @@ def transpose(outerlist):
         innerlist = outerlist[i]
         j = 0
         while j < len(innerlist):
-            if result[j] is None:
-                result[j] = []
+            if j >= len(result):
+                result.append([])
             result[j].append(innerlist[j])
             j += 1
         i += 1

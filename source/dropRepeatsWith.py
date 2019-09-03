@@ -10,7 +10,7 @@ def dropRepeatsWith(pred, list):
     idx = 1
     len_ = len(list)
     if len_ != 0:
-        result[0] = list[0]
+        result.append(list[0])
         while idx < len_:
             if not pred(last(result), list[idx]):
                 result.append(list[idx])

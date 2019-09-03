@@ -3,6 +3,9 @@
 from ..type import type
 
 def _clone(value, refFrom, refTo, deep):
+    import copy
+    return copy.deepcopy(value) if deep else copy.copy(value)
+
     def copy(copiedValue):
         len_ = len(refFrom)
         idx = 0

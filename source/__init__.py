@@ -189,7 +189,7 @@ from .repeat import repeat
 from .replace import replace
 from .reverse import reverse
 from .scan import scan
-from .sequence import sequence
+# from .sequence import sequence
 from .set import set
 from .slice import slice
 from .sort import sort
@@ -221,7 +221,7 @@ from .toString import toString
 from .toUpper import toUpper
 # from .transduce import transduce
 from .transpose import transpose
-from .traverse import traverse
+# from .traverse import traverse
 from .trim import trim
 from .tryCatch import tryCatch
 from .type import type

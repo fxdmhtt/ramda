@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from .invoker import invoker
+from .internal._curry2 import _curry2
 
-join = invoker(1, 'join')
+@_curry2
+def join(separator, xs):
+    return separator.join(map(str, xs))

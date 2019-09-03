@@ -13,5 +13,10 @@ _xwrap = None
 def _reduce(fn, acc, list):
     # ignore: _reduce
 
-    from functools import reduce
-    return reduce(fn, list, acc)
+    if callable(getattr(list, 'reduce', None)):
+        return getattr(list, 'reduce')(acc)
+    elif isinstance(list, dict) and callable(list.get('reduce')):
+        return list['reduce'](acc)
+    else:
+        from functools import reduce
+        return reduce(fn, list, acc)

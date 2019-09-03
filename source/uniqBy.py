@@ -12,7 +12,8 @@ def uniqBy(fn, list):
     while idx < len(list):
         item = list[idx]
         appliedItem = fn(item)
-        set.add(appliedItem)
-        result.append(item)
+        if appliedItem not in set:
+            set.add(appliedItem)
+            result.append(item)
         idx += 1
     return result
