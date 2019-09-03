@@ -5,4 +5,4 @@ from .is_ import is_
 
 @_curry3
 def propIs(type, name, obj):
-    return is_(type, obj[name])
+    return is_(type, obj.get(name))
