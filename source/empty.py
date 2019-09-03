@@ -12,5 +12,5 @@ def empty(x):
         else [] if _isArray(x)
         else '' if _isString(x)
         else {} if _isObject(x)
-        else 0
+        else None
     )
