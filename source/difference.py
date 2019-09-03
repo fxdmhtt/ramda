@@ -15,7 +15,8 @@ def difference(first, second):
         toFilterOut.add(second[i])
 
     while idx < firstLen:
-        if toFilterOut.add(first[idx]):
+        if first[idx] not in toFilterOut:
+            toFilterOut.add(first[idx])
             out.append(first[idx])
         idx += 1
     return out
