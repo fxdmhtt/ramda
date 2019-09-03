@@ -14,5 +14,5 @@ def useWith(fn, transformers):
         while idx < len(transformers):
             args.append(transformers[idx](arguments[idx]))
             idx += 1
-        return fn(*args + arguments[len(transformers):])
+        return fn(*args, *arguments[len(transformers):])
     return curryN(len(transformers), function)

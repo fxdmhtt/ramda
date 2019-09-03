@@ -11,6 +11,6 @@ def thunkify(fn):
     @sig
     def createThunk(*arguments):
         fnArgs = arguments
-        return sig(lambda *_: \
-            fn(*fnArgs))
+        return lambda *_: \
+            fn(*fnArgs)
     return curryN(length(fn), createThunk)

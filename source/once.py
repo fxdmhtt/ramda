@@ -12,6 +12,7 @@ def once(fn):
     result = None
     @sig
     def function(*arguments):
+        nonlocal called
         nonlocal result
         if called:
             return result

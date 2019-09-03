@@ -7,4 +7,4 @@ from .internal import sig
 @_curry1
 def unapply(fn):
     return sig(lambda *arguments: \
-        fn(arguments[0:]))
+        fn(arguments[:]))

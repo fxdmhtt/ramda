@@ -62,12 +62,12 @@ def jsify(fn):
     from functools import wraps
     @wraps(fn)
     def _JSFunction(*args):
-        if len(args) == length or var_length:
+        if len(args) < length:
+            return fn(*(args + (None,) * (length - len(args))))
+        elif len(args) == length or var_length:
             return fn(*args)
         elif len(args) > length:
             return fn(*args[:length])
-        else:
-            return fn(*(args + (None,) * (length - len(args))))
 
     _JSFunction.__signature__ = sig.replace(parameters=parameters)
     _JSFunction.length = length

@@ -16,13 +16,13 @@ from .internal import jsify
 
 def mapValues(fn, obj):
     return (
-        map(fn, obj) if _isArray(obj)
-        else keys(obj).reduce(lambda acc, key: \
+        list(map(fn, obj)) if _isArray(obj)
+        else reduce(lambda acc, key: \
             (
                 acc.__setitem__(key, fn(obj[key])),
                 acc
             )[-1]
-        , {})
+        , {}, keys(obj))
     )
 
 @_curry1

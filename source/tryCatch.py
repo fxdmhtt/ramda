@@ -5,6 +5,7 @@ from .internal._concat import _concat
 from .internal._curry2 import _curry2
 
 from .internal import sig
+from .internal import jsify
 from .internal import length
 
 @_curry2
@@ -12,7 +13,7 @@ def tryCatch(tryer, catcher):
     @sig
     def function(*arguments):
         try:
-            return tryer(*arguments)
+            return jsify(tryer)(*arguments)
         except Exception as e:
-            return catcher(*_concat([e], arguments))
+            return jsify(catcher)(*_concat([e], arguments))
     return _arity(length(tryer), function)
