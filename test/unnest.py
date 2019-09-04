@@ -17,7 +17,7 @@ class Test_unnest(unittest.TestCase):
 
     def test_is_not_destructive(self):
         nest = [1, [2], [3, [4, 5], 6, [[[7], 8]]], 9, 10]
-        eq(self, R.unnest(nest), [1, 2, 3, [4, 5], 6, [[[7], 8]], 9, 10])
+        self.assertIsNot(R.unnest(nest), nest)
 
     # def test_handles_array_like_objects(self):
     #     o = {'length': 3, 0: [1, 2, [3]], 1: [], 2: ['a', 'b', 'c', ['d', 'e']]}

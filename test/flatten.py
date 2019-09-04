@@ -17,7 +17,7 @@ class Test_flatten(unittest.TestCase):
 
     def test_is_not_destructive(self):
         nest = [1, [2], [3, [4, 5], 6, [[[7], 8]]], 9, 10]
-        self.assertListEqual(R.flatten(nest), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        self.assertIsNot(R.flatten(nest), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
     def test_handles_ridiculously_large_inputs(self):
         eq(self, len(R.flatten([[None] * 1000000, R.range(0, 56000), 5, 1, 3])), 1056003)

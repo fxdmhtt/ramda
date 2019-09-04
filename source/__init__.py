@@ -60,7 +60,7 @@ from .endsWith import endsWith
 from .eqBy import eqBy
 from .eqProps import eqProps
 from .equals import equals
-from .evolve import evolve
+# from .evolve import evolve
 from .filter import filter
 from .find import find
 from .findIndex import findIndex

@@ -6,6 +6,6 @@ from .internal._has import _has
 @_curry2
 def where(spec, testObj):
     for prop in spec:
-        if _has(prop, spec) and not spec[prop](testObj[prop]):
+        if _has(prop, spec) and not spec[prop](testObj.get(prop)):
             return False
     return True

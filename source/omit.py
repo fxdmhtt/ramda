@@ -14,6 +14,6 @@ def omit(names, obj):
         idx += 1
 
     for prop in obj:
-        if hasattr(index, prop):
+        if prop not in index:
             result[prop] = obj[prop]
     return result

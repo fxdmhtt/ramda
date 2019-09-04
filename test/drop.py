@@ -23,8 +23,8 @@ class Test_drop(unittest.TestCase):
     def test_never_returns_the_input_array(self):
         xs = [1, 2, 3]
 
-        self.assertListEqual(R.drop(0, xs), xs)
-        self.assertListEqual(R.drop(-1, xs), xs)
+        self.assertIsNot(R.drop(0, xs), xs)
+        self.assertIsNot(R.drop(-1, xs), xs)
 
     def test_can_operate_on_strings(self):
         eq(self, R.drop(3, 'Ramda'), 'da')

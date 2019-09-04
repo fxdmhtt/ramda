@@ -10,6 +10,12 @@ from .internal._curry1 import _curry1
 
 @_curry1
 def keys(obj):
-    return [] if not isinstance(obj, dict) else list(obj.keys())
+    from collections import Mapping, Collection
+    return list(
+        [] if isinstance(obj, str)
+        else obj.keys() if isinstance(obj, Mapping)
+        else range(len(obj)) if isinstance(obj, Collection)
+        else []
+    )
 
     # ignore: rest

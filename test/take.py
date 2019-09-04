@@ -23,10 +23,10 @@ class Test_take(unittest.TestCase):
     def test_never_returns_the_input_array(self):
         xs = [1, 2, 3]
 
-        self.assertEqual(R.take(3, xs), xs)
+        self.assertIsNot(R.take(3, xs), xs)
         import sys
-        self.assertEqual(R.take(sys.maxsize, xs), xs)
-        self.assertEqual(R.take(-1, xs), xs)
+        self.assertIsNot(R.take(sys.maxsize, xs), xs)
+        self.assertIsNot(R.take(-1, xs), xs)
 
     def test_can_operate_on_strings(self):
         eq(self, R.take(3, 'Ramda'), 'Ram')

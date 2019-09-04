@@ -6,9 +6,9 @@ from .map import map
 @_curry2
 def lens(getter, setter):
     return lambda toFunctorFn: \
-        lambda target: \
-            map(
-                lambda focus: \
+        lambda target, *args: \
+            toFunctorFn(
+                lambda focus, *args: \
                     setter(focus, target),
-                toFunctorFn(getter(target))
+                getter(target)
             )

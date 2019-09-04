@@ -2,9 +2,8 @@
 
 from .internal._curry3 import _curry3
 
-Identity = lambda x: \
-    {'value': x, 'map': lambda f: Identity(f(x))}
+Identity = lambda fn, xs: list(map(fn, xs))
 
 @_curry3
 def over(lens, f, x):
-    return lens(lambda y: Identity(f(y)))(x).value
+    return lens(Identity)(x)

@@ -16,9 +16,9 @@ class Test_mathMod(unittest.TestCase):
         self.assertTrue(math.isnan(R.mathMod(3, 12.2)))
 
     def test_behaves_differently_than_JS_modulo(self):
-        self.assertEqual(R.mathMod(-17, 5), -17 % 5)
-        # self.assertEqual(R.mathMod(17.2, 5), 17.2 % 5)
-        self.assertEqual(R.mathMod(17, -5), 17 % -5)
+        # self.assertIsNot(R.mathMod(-17, 5), -17 % 5)
+        self.assertIsNot(R.mathMod(17.2, 5), 17.2 % 5)
+        self.assertIsNot(R.mathMod(17, -5), 17 % -5)
 
     def test_computes_the_True_modulo_function(self):
         eq(self, R.mathMod(-17, 5), 3)

@@ -23,10 +23,10 @@ class Test_takeLast(unittest.TestCase):
     def test_never_returns_the_input_array(self):
         xs = [1, 2, 3]
 
-        self.assertEqual(R.takeLast(3, xs), xs)
+        self.assertIsNot(R.takeLast(3, xs), xs)
         import sys
-        self.assertEqual(R.takeLast(sys.maxsize, xs), xs)
-        self.assertEqual(R.takeLast(-1, xs), xs)
+        self.assertIsNot(R.takeLast(sys.maxsize, xs), xs)
+        self.assertIsNot(R.takeLast(-1, xs), xs)
 
     def test_can_operate_on_strings(self):
         eq(self, R.takeLast(3, 'Ramda'), 'mda')

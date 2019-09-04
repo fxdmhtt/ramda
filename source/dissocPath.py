@@ -17,9 +17,12 @@ def dissocPath(path, obj):
     else:
         head = path[0]
         tail = path[1:]
-        if obj[head] is None:
+        if isinstance(obj, dict):
+            if obj.get(head) is None:
+                return obj
+        elif head < len(obj) and obj[head] is None:
             return obj
-        elif _isInteger(head) and _isArray(obj):
+        if _isInteger(head) and _isArray(obj):
             return update(head, dissocPath(tail, obj[head]), obj)
         else:
             return assoc(head, dissocPath(tail, obj[head]), obj)

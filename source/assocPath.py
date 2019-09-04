@@ -23,6 +23,8 @@ def assocPath(path, val, obj):
         val = assocPath(path[1:], val, nextObj)
     if _isInteger(idx) and _isArray(obj):
         arr = [] + obj
+        if idx >= len(arr):
+            arr += [None] * (idx - len(arr) + 1)
         arr[idx] = val
         return arr
     else:

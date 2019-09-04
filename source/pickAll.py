@@ -9,6 +9,6 @@ def pickAll(names, obj):
     len_ = len(names)
     while idx < len_:
         name = names[idx]
-        result[name] = obj[name]
+        result[name] = obj.get(name)
         idx += 1
     return result

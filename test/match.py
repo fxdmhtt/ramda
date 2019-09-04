@@ -20,7 +20,7 @@ class Test_match(unittest.TestCase):
     def test_defaults_to_a_different_empty_array_each_time(self):
         first = R.match(self.re, self.notMatching)
         second = R.match(self.re, self.notMatching)
-        self.assertEqual(first, second)
+        self.assertIsNot(first, second)
 
     def test_throws_on_None_input(self):
         with self.assertRaises(TypeError):
