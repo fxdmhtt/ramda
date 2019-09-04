@@ -117,6 +117,7 @@ from .lte import lte
 from .map import map
 from .mapAccum import mapAccum
 from .mapAccumRight import mapAccumRight
+from .mapIndexed import mapIndexed
 from .mapObjIndexed import mapObjIndexed
 from .match import match
 from .mathMod import mathMod
