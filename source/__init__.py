@@ -106,10 +106,10 @@ from .keysIn import keysIn
 from .last import last
 from .lastIndexOf import lastIndexOf
 from .length import length
-from .lens import lens
-from .lensIndex import lensIndex
-from .lensPath import lensPath
-from .lensProp import lensProp
+# from .lens import lens
+# from .lensIndex import lensIndex
+# from .lensPath import lensPath
+# from .lensProp import lensProp
 from .lift import lift
 from .liftN import liftN
 from .lt import lt
@@ -152,7 +152,7 @@ from .omit import omit
 from .once import once
 from .or_ import or_
 # from .otherwise import otherwise
-from .over import over
+# from .over import over
 from .pair import pair
 from .partial import partial
 from .partialRight import partialRight
@@ -190,7 +190,7 @@ from .replace import replace
 from .reverse import reverse
 from .scan import scan
 # from .sequence import sequence
-from .set import set
+# from .set import set
 from .slice import slice
 from .sort import sort
 from .sortBy import sortBy
@@ -241,7 +241,7 @@ from .update import update
 from .useWith import useWith
 from .values import values
 from .valuesIn import valuesIn
-from .view import view
+# from .view import view
 from .when import when
 from .where import where
 from .whereEq import whereEq
