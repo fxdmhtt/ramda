@@ -2,6 +2,5 @@
 
 from .internal._curry2 import _curry2
 
-@_curry2
-def lt(a, b):
-    return a < b
+from operator import lt
+lt = _curry2(lt)

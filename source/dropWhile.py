@@ -10,6 +10,5 @@ def dropWhile(pred, xs):
     len_ = len(xs)
     while idx < len_ and pred(xs[idx]):
         idx += 1
-    import sys
-    return slice(idx, sys.maxsize, xs)
+    return slice(idx, None, xs)
 dropWhile = _curry2(_dispatchable(['dropWhile'], _xdropWhile, dropWhile))

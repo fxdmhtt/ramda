@@ -15,15 +15,15 @@ f = R.innerJoin(lambda r, id: r['id'] == id)
 
 class Test_innerJoin(unittest.TestCase):
     def test_only_returns_elements_from_the_first_list(self):
-        eq(self, f([a, b, c], []), [])
-        eq(self, f([a, b, c], [1]), [a])
-        eq(self, f([a, b, c], [1, 2]), [a, b])
-        eq(self, f([a, b, c], [1, 2, 3]), [a, b, c])
-        eq(self, f([a, b, c], [1, 2, 3, 4]), [a, b, c])
+        self.assertSequenceEqual(list(f([a, b, c], [])), [])
+        self.assertSequenceEqual(list(f([a, b, c], [1])), [a])
+        self.assertSequenceEqual(list(f([a, b, c], [1, 2])), [a, b])
+        self.assertSequenceEqual(list(f([a, b, c], [1, 2, 3])), [a, b, c])
+        self.assertSequenceEqual(list(f([a, b, c], [1, 2, 3, 4])), [a, b, c])
 
     def test_does_not_remove_duplicates(self):
-        eq(self, f([a, a, a], [1, 2, 3]), [a, a, a])
-        eq(self, f([a, b, c], [1, 1, 1]), [a])
+        self.assertSequenceEqual(list(f([a, a, a], [1, 2, 3])), [a, a, a])
+        self.assertSequenceEqual(list(f([a, b, c], [1, 1, 1])), [a])
 
 
 if __name__ == '__main__':

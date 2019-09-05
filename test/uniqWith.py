@@ -20,14 +20,14 @@ class Test_uniqWith(unittest.TestCase):
         self.eqI = lambda x, accX: x['i'] == accX['i']
 
     def test_returns_a_set_from_any_array_purges_duplicate_elements_based_on_predicate(self):
-        eq(self, R.uniqWith(self.eqI, self.objs), self.objs)
-        eq(self, R.uniqWith(self.eqI, self.objs2), [{'x': R.T, 'i': 0}, {'x': R.F, 'i': 1}, {'x': R.T, 'i': 2}, {'x': R.T, 'i': 3}])
+        self.assertSequenceEqual(list(R.uniqWith(self.eqI, self.objs)), self.objs)
+        self.assertSequenceEqual(list(R.uniqWith(self.eqI, self.objs2)), [{'x': R.T, 'i': 0}, {'x': R.F, 'i': 1}, {'x': R.T, 'i': 2}, {'x': R.T, 'i': 3}])
 
     def test_keeps_elements_from_the_left(self):
-        eq(self, R.uniqWith(self.eqI, [{'i': 1}, {'i': 2}, {'i': 3}, {'i': 4}, {'i': 1}]), [{'i': 1}, {'i': 2}, {'i': 3}, {'i': 4}])
+        self.assertSequenceEqual(list(R.uniqWith(self.eqI, [{'i': 1}, {'i': 2}, {'i': 3}, {'i': 4}, {'i': 1}])), [{'i': 1}, {'i': 2}, {'i': 3}, {'i': 4}])
 
     def test_returns_an_empty_array_for_an_empty_array(self):
-        eq(self, R.uniqWith(self.eqI, []), [])
+        self.assertSequenceEqual(list(R.uniqWith(self.eqI, [])), [])
 
 
 if __name__ == '__main__':

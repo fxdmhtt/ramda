@@ -11,8 +11,7 @@ def flip(fn):
     @sig(names=['a', 'b'])
     def function(*arguments):
         a, b, *_ = *arguments, None, None
-        args = list(arguments[0:])
-        args[0] = b
-        args[1] = a
+        args = list(arguments)
+        args[:2] = args[1::-1]
         return fn(*args)
     return curryN(length(fn), function)

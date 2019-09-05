@@ -16,8 +16,7 @@ def converge(after, fns):
     fns = [jsify(fn) for fn in fns]
     @sig
     def function(*arguments):
-        args = arguments
         return after(*_map(lambda fn: \
-            fn(*args)
+            fn(*arguments)
         , fns))
     return curryN(reduce(max, 0, (length(fn) for fn in fns)), function)

@@ -2,6 +2,5 @@
 
 from .internal._curry1 import _curry1
 
-@_curry1
-def not_(a):
-    return not a
+from operator import not_
+not_ = _curry1(not_)

@@ -5,10 +5,13 @@ from .internal._isArray import _isArray
 from .internal._isObject import _isObject
 from .internal._isString import _isString
 
+from .internal._getitem import _getitem
+
 @_curry1
 def empty(x):
+    emptyFn = _getitem(x, 'empty')
     return (
-        x.empty() if x is not None and callable(getattr(x, 'empty', None))
+        emptyFn() if callable(emptyFn)
         else [] if _isArray(x)
         else '' if _isString(x)
         else {} if _isObject(x)

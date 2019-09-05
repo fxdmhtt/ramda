@@ -7,9 +7,5 @@ from .slice import slice
 def splitEvery(n, list):
     if n <= 0:
         raise ValueError('First argument to splitEvery must be a positive integer')
-    result = []
-    idx = 0
-    while idx < len(list):
-        result.append(slice(idx, idx + n, list))
-        idx += n
-    return result
+    for idx in range(0, len(list), n):
+        yield slice(idx, idx + n, list)

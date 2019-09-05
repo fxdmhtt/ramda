@@ -6,4 +6,7 @@ from .takeLast import takeLast
 
 @_curry2
 def endsWith(suffix, list):
-    return equals(takeLast(len(suffix), list), suffix)
+    return (
+        list.endswith(suffix) if isinstance(list, str)
+        else equals(takeLast(len(suffix), list), suffix)
+    )

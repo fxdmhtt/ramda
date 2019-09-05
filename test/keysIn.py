@@ -16,16 +16,16 @@ class Test_keysIn(unittest.TestCase):
         # cobj = C()
 
     def test_returns_an_array_of_the_given_objects_keys(self):
-        eq(self, sorted(R.keysIn(self.obj)), ['a', 'b', 'c', 'd', 'e', 'f'])
+        self.assertSequenceEqual(sorted(R.keysIn(self.obj)), ['a', 'b', 'c', 'd', 'e', 'f'])
 
     # def test_includes_the_given_objects_prototype_properties(self):
-    #     eq(self, sorted(R.keysIn(cobj)), ['a', 'b', 'x', 'y'])
+    #     self.assertSequenceEqual(sorted(R.keysIn(cobj)), ['a', 'b', 'x', 'y'])
 
     def test_works_for_primitives(self):
         result = R.map(lambda val: \
-            R.keys(val)
+            list(R.keys(val))
         , [None, None, 55, '', True, False, float('nan'), float('inf'), None, []])
-        eq(self, result, R.repeat([], 10))
+        self.assertSequenceEqual(result, list(R.repeat([], 10)))
 
 
 if __name__ == '__main__':

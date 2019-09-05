@@ -4,11 +4,4 @@ from .internal._curry2 import _curry2
 
 @_curry2
 def pickAll(names, obj):
-    result = {}
-    idx = 0
-    len_ = len(names)
-    while idx < len_:
-        name = names[idx]
-        result[name] = obj.get(name)
-        idx += 1
-    return result
+    return {k: obj.get(k) for k in names}

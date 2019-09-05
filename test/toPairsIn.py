@@ -9,7 +9,7 @@ import unittest
 
 class Test_toPairsIn(unittest.TestCase):
     def test_converts_an_object_into_an_array_of_two_element_key_value_arrays(self):
-        eq(self, R.toPairsIn({'a': 1, 'b': 2, 'c': 3}), [['a', 1], ['b', 2], ['c', 3]])
+        self.assertSequenceEqual(list(R.toPairsIn({'a': 1, 'b': 2, 'c': 3})), [('a', 1), ('b', 2), ('c', 3)])
 
     # def test_iterates_properties_on_the_objects_prototype_chain(self):
     #     function sortPairs(a, b) {

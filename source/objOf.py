@@ -4,6 +4,4 @@ from .internal._curry2 import _curry2
 
 @_curry2
 def objOf(key, val):
-    obj = {}
-    obj[key] = val
-    return obj
+    return {key: val}

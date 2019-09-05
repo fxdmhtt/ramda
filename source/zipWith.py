@@ -2,12 +2,9 @@
 
 from .internal._curry3 import _curry3
 
+from .internal import jsify
+from .apply import apply
+
 @_curry3
 def zipWith(fn, a, b):
-    rv = []
-    idx = 0
-    len_ = min(len(a), len(b))
-    while idx < len_:
-        rv.append(fn(a[idx], b[idx]))
-        idx += 1
-    return rv
+    return map(apply(jsify(fn)), zip(a, b))

@@ -5,4 +5,4 @@ from .equals import equals
 
 @_curry3
 def eqProps(prop, obj1, obj2):
-    return equals(obj1[prop], obj2[prop])
+    return equals(obj1.get(prop), obj2.get(prop))

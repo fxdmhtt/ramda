@@ -8,9 +8,5 @@ from .internal import jsify
 
 @_curry2
 def mapObjIndexed(fn, obj):
-    return _reduce(lambda acc, key: \
-        (
-            acc.__setitem__(key, jsify(fn)(obj[key], key, obj)),
-            acc
-        )[-1]
-    , {}, keys(obj))
+    fn = jsify(fn)
+    return {k: fn(obj[k], k, obj) for k in obj}

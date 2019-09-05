@@ -12,7 +12,7 @@ def invoker(arity, method):
     @sig
     def function(*arguments):
         target = arguments[arity]
-        if target is not None and _isFunction(getattr(target, method, None)):
+        if _isFunction(getattr(target, method, None)):
             return getattr(target, method)(*arguments[0:arity])
         raise TypeError(toString(target) + ' does not have a method named "' + method + '"')
     return curryN(arity + 1, function)

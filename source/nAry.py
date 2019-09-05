@@ -2,9 +2,10 @@
 
 from .internal._curry2 import _curry2
 
+from .internal import jsify
+
 @_curry2
 def nAry(n, fn):
-    from .internal import jsify
     if   n ==  0: return jsify(lambda *_: jsify(fn)())
     elif n ==  1: return jsify(lambda a0, *_: jsify(fn)(a0))
     elif n ==  2: return jsify(lambda a0, a1, *_: jsify(fn)(a0, a1))

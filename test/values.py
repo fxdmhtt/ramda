@@ -37,7 +37,7 @@ class Test_values(unittest.TestCase):
         result = R.map(lambda val: \
             R.keys(val)
         , [None, None, 55, '', True, False, float('nan'), float('inf'), None, []])
-        eq(self, result, R.repeat([], 10))
+        eq(self, result, list(R.repeat([], 10)))
 
 
 if __name__ == '__main__':

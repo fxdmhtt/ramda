@@ -2,7 +2,8 @@
 
 from .internal._curry2 import _curry2
 
+from functools import cmp_to_key
+
 @_curry2
 def sort(comparator, list):
-    from functools import cmp_to_key
-    return sorted(list[0:], key=cmp_to_key(comparator))
+    return sorted(list, key=cmp_to_key(comparator))

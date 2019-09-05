@@ -34,8 +34,8 @@ from .compose import compose
 from .composeWith import composeWith
 from .concat import concat
 from .cond import cond
-from .construct import construct
-from .constructN import constructN
+# from .construct import construct
+# from .constructN import constructN
 from .converge import converge
 from .countBy import countBy
 from .curry import curry

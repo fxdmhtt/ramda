@@ -8,5 +8,4 @@ def takeLastWhile(fn, xs):
     idx = len(xs) - 1
     while idx >= 0 and fn(xs[idx]):
         idx -= 1
-    import sys
-    return slice(idx + 1, sys.maxsize, xs)
+    return slice(idx + 1, None, xs)

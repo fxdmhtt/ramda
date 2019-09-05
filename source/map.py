@@ -8,22 +8,16 @@ from .internal._xmap import _xmap
 from .curryN import curryN
 from .keys import keys
 
-from .internal import sig
 from .internal import length
 
 @_curry2
 def map(fn, functor):
     if callable(functor):
-        return curryN(length(functor), sig(lambda *arguments: \
-            fn(functor(*arguments)))
+        return curryN(length(functor), lambda *arguments: \
+            fn(functor(*arguments))
         )
     elif isinstance(functor, dict):
-        return _reduce(lambda acc, key: \
-            (
-                acc.__setitem__(key, fn(functor[key])),
-                acc
-            )[-1]
-        , {}, keys(functor))
+        return {k: fn(functor[k]) for k in functor}
     else:
         return _map(fn, functor)
 map = _curry2(_dispatchable(['map'], _xmap, map))

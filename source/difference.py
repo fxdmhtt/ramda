@@ -8,11 +8,7 @@ def difference(first, second):
     out = []
     idx = 0
     firstLen = len(first)
-    secondLen = len(second)
-    toFilterOut = _Set()
-
-    for i in range(secondLen):
-        toFilterOut.add(second[i])
+    toFilterOut = set(second)
 
     while idx < firstLen:
         if first[idx] not in toFilterOut:

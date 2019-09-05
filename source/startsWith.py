@@ -6,4 +6,7 @@ from .take import take
 
 @_curry2
 def startsWith(prefix, list):
-    return equals(take(len(prefix), list), prefix)
+    return (
+        list.startswith(prefix) if isinstance(list, str)
+        else equals(take(len(prefix), list), prefix)
+    )

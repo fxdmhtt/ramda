@@ -6,10 +6,8 @@ from .internal._curry2 import _curry2
 def splitWhen(pred, list):
     idx = 0
     len_ = len(list)
-    prefix = []
 
     while idx < len_ and not pred(list[idx]):
-        prefix.append(list[idx])
         idx += 1
 
-    return [prefix, list[idx:]]
+    return [list[:idx], list[idx:]]

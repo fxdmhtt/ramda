@@ -5,4 +5,4 @@ from .internal._curry1 import _curry1
 
 @_curry1
 def mergeAll(list):
-    return _objectAssign(*([{}] + list))
+    return _objectAssign({}, *list)

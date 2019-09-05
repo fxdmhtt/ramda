@@ -3,11 +3,9 @@
 from .internal._checkForMethod import _checkForMethod
 from .internal._curry2 import _curry2
 
-def forEach(fn, list):
-    len_ = len(list)
-    idx = 0
-    while idx < len_:
-        fn(list[idx])
-        idx += 1
-    return list
+from .internal import jsify
+
+def forEach(fn, list_):
+    list(map(jsify(fn), list_))
+    return list_
 forEach = _curry2(_checkForMethod('forEach', forEach))

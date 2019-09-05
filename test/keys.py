@@ -16,10 +16,10 @@ class Test_keys(unittest.TestCase):
         # cobj = C()
 
     def test_returns_an_array_of_the_given_objects_own_keys(self):
-        eq(self, sorted(R.keys(self.obj)), ['a', 'b', 'c', 'd', 'e', 'f'])
+        self.assertSequenceEqual(sorted(R.keys(self.obj)), ['a', 'b', 'c', 'd', 'e', 'f'])
 
     def test_works_with_hasOwnProperty_override(self):
-        eq(self, R.keys({
+        self.assertSequenceEqual(R.keys({
             'hasOwnProperty': False
         }), ['hasOwnProperty'])
 
@@ -27,10 +27,10 @@ class Test_keys(unittest.TestCase):
         result = R.map(lambda val: \
             R.keys(val)
         , [None, None, 55, '', True, False, float('nan'), float('inf'), None, []])
-        eq(self, result, R.repeat([], 10))
+        self.assertSequenceEqual(result, list(R.repeat([], 10)))
 
     # def test_does_not_include_the_given_objects_prototype_properties(self):
-    #     eq(self, R.keys(self.cobj).sort(), ['a', 'b'])
+    #     self.assertSequenceEqual(R.keys(self.cobj).sort(), ['a', 'b'])
 
 
 if __name__ == '__main__':

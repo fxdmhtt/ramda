@@ -13,7 +13,7 @@ class Test_union(unittest.TestCase):
         self.N = [3, 4, 5, 6]
 
     def test_combines_two_lists_into_the_set_of_all_their_elements(self):
-        eq(self, R.union(self.M, self.N), [1, 2, 3, 4, 5, 6])
+        self.assertSequenceEqual(list(R.union(self.M, self.N)), [1, 2, 3, 4, 5, 6])
 
     # def test_has_R.equals_semantics(self):
     #     function Just(x) { this.value = x }

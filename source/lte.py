@@ -2,6 +2,5 @@
 
 from .internal._curry2 import _curry2
 
-@_curry2
-def lte(a, b):
-    return a <= b
+from operator import le
+lte = _curry2(le)

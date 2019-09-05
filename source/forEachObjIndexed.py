@@ -7,10 +7,6 @@ from .internal import jsify
 
 @_curry2
 def forEachObjIndexed(fn, obj):
-    keyList = keys(obj)
-    idx = 0
-    while idx < len(keyList):
-        key = keyList[idx]
-        jsify(fn)(obj[key], key, obj)
-        idx += 1
+    fn = jsify(fn)
+    list(map(lambda pair: fn(pair[1], pair[0], obj), obj.items()))
     return obj

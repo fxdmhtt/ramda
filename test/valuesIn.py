@@ -16,7 +16,7 @@ class Test_valuesIn(unittest.TestCase):
         # cobj = C()
 
     def test_returns_an_array_of_the_given_objects_values(self):
-        vs = R.valuesIn(self.obj)
+        vs = list(R.valuesIn(self.obj))
         eq(self, len(vs), 6)
         eq(self, R.indexOf(100, vs) >= 0, True)
         eq(self, R.indexOf('D', vs) >= 0, True)
@@ -35,9 +35,9 @@ class Test_valuesIn(unittest.TestCase):
 
     def test_works_for_primitives(self):
         result = R.map(lambda val: \
-            R.valuesIn(val)
+            list(R.valuesIn(val))
         , [None, None, 55, '', True, False, float('nan'), float('inf'), None, []])
-        eq(self, result, R.repeat([], 10))
+        eq(self, result, list(R.repeat([], 10)))
 
 
 if __name__ == '__main__':

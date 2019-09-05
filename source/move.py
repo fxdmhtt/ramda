@@ -14,5 +14,5 @@ def move(from_, to, list):
     return (
         list if positiveFrom < 0 or positiveFrom >= len(list) \
              or positiveTo   < 0 or positiveTo   >= len(list)
-        else result[0:positiveTo] + item + result[positiveTo:len(list)]
+        else result[:positiveTo] + item + result[positiveTo:]
     )

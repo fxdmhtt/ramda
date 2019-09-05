@@ -2,9 +2,8 @@
 
 from .internal._curry3 import _curry3
 
+from .insertAll import insertAll
+
 @_curry3
 def insert(idx, elt, list):
-    idx = idx if idx < len(list) and idx >= 0 else len(list)
-    result = list[0:]
-    result = result[:idx] + [elt] + result[idx + 0:]
-    return result
+    return insertAll(idx, [elt], list)

@@ -16,8 +16,8 @@ def addIndex(fn):
     def function(*arguments):
         idx = 0
         origFn = jsify(arguments[0])
-        list_ = arguments[len(arguments) - 1]
-        args = list(arguments[0:])
+        list_ = arguments[-1]
+        args = list(arguments)
         @sig
         def function(*arguments):
             nonlocal idx

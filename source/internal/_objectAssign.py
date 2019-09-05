@@ -11,13 +11,5 @@ def _objectAssign(*arguments):
         raise TypeError('Cannot convert undefined or null to object')
 
     output = dict(target)
-    idx = 1
-    length = len(arguments)
-    while idx < length:
-        source = arguments[idx]
-        if source is not None:
-            for nextKey in source:
-                if _has(nextKey, source):
-                    output[nextKey] = source[nextKey]
-        idx += 1
+    list(map(output.update, arguments[1:]))
     return output

@@ -11,18 +11,19 @@ from .internal import sig
 from .internal import length
 
 @_curry2
-def pipeWith(xf, list):
-    if len(list) <= 0:
+def pipeWith(xf, list_):
+    list_ = list(list_)
+    if len(list_) <= 0:
         return identity
 
-    headList = head(list)
-    tailList = tail(list)
+    headList = head(list_)
+    tailList = tail(list_)
 
-    return _arity(length(headList), sig(lambda *arguments: \
+    return _arity(length(headList), lambda *arguments: \
         _reduce(
             lambda result, f: \
                 xf(f, result),
             headList(*arguments),
             tailList
-        ))
+        )
     )

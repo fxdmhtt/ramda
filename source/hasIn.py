@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from .internal._curry2 import _curry2
+from .has import has
 
-@_curry2
-def hasIn(prop, obj):
-    return prop in obj
+hasIn = has

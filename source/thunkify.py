@@ -10,7 +10,6 @@ from .internal import length
 def thunkify(fn):
     @sig
     def createThunk(*arguments):
-        fnArgs = arguments
         return lambda *_: \
-            fn(*fnArgs)
+            fn(*arguments)
     return curryN(length(fn), createThunk)

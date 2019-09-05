@@ -15,5 +15,5 @@ def tryCatch(tryer, catcher):
         try:
             return jsify(tryer)(*arguments)
         except Exception as e:
-            return jsify(catcher)(*_concat([e], arguments))
+            return jsify(catcher)(e, *arguments)
     return _arity(length(tryer), function)
