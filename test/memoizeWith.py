@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
+from shared.eq import eq
 
 import unittest
 
@@ -47,7 +45,7 @@ class Test_memoizeWith(unittest.TestCase):
 
     def test_can_be_applied_to_function_with_optional_arguments(self):
         count = 0
-        from ..source.internal import sig
+        from ramda.internal import sig
         @sig(names=['a', 'b'])
         def concat(*arguments):
             a, b, *_ = *arguments, None, None

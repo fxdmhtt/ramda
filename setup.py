@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="http://gitlab.babiggy.com:10080/root/ramda.git",
-    packages=setuptools.find_packages(),
+    packages=list(filter(lambda x: x.startswith('ramda'), setuptools.find_packages())),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

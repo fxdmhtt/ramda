@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
+from shared.eq import eq
 
 import unittest
-from ..source.internal import jsify
+from ramda.internal import jsify
 
 class Test_thunkify(unittest.TestCase):
     def test_returns_a_function_with_the_same_arity_as_the_given_function(self):

@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
+from shared.eq import eq
 
 import unittest
-from ..source.internal import sig
+from ramda.internal import sig
 
 class Test_unary(unittest.TestCase):
     def test_turns_multiple_argument_function_into_unary_one(self):

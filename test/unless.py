@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
-from ..source.internal._isArrayLike import _isArrayLike
+from shared.eq import eq
+from ramda.internal._isArrayLike import _isArrayLike
 
 import unittest
 

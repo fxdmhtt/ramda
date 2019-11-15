@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
+from shared.eq import eq
 
 import unittest
-from ..source.internal._curry2 import _curry2
+from ramda.internal._curry2 import _curry2
 
 class Test_tap(unittest.TestCase):
     def setUp(self):

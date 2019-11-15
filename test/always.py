@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
+from shared.eq import eq
 
 import unittest
 from datetime import date

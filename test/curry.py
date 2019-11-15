@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-__package__ = 'ramda.test'
-
 import ramda as R
-from .shared.eq import eq
+from shared.eq import eq
 
 import unittest
 import random
@@ -105,7 +103,7 @@ class Test_curry(unittest.TestCase):
         eq(self, g(_, _, _)(1, _, _)(_, _)(2, _)(_)(3), [1, 2, 3])
 
     def test_forwards_extra_arguments(self):
-        from ..source.internal import sig
+        from ramda.internal import sig
         @sig(names=['a', 'b', 'c'])
         def f(*arguments):
             a, b, c, *_ = *arguments, None, None, None
