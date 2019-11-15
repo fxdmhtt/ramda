@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from ... import source as R
+import ramda as R
 
 def eq(self, actual, expected):
     self.assertEqual(R.toString(actual), R.toString(expected))

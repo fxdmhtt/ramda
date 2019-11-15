@@ -2,7 +2,7 @@
 
 __package__ = 'ramda.test'
 
-from .. import source as R
+import ramda as R
 from .shared.eq import eq
 
 import unittest
