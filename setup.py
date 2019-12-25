@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="ramda",
-    version="0.26.1.0905",
+    version="0.26.1.1225",
     author="Junkang Yuan",
     author_email="yuanjunkang@gmail.com",
     description="A practical functional library for JavaScript programmers.",
