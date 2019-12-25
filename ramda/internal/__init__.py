@@ -9,7 +9,10 @@ def length(fn):
     if hasattr(fn, 'length'):
         return fn.length
 
-    return len(inspect.signature(fn).parameters)
+    return sum(
+        param.kind not in {Parameter.VAR_POSITIONAL, Parameter.VAR_KEYWORD}
+        for param in inspect.signature(fn).parameters.values()
+    )
 
 def sig(fn=None, *, names=[]):
     """设置类 js 方法的理论形参，实际形参一定是 *arguments"""
